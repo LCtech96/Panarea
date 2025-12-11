@@ -26,14 +26,16 @@ export default function Home() {
             />
             {/* Profile Picture - Overlay on Banner */}
             <div className="absolute bottom-0 left-4 md:left-8 transform translate-y-1/2 z-10">
-              <div className="w-32 h-32 md:w-40 md:h-40 rounded-full border-4 border-white dark:border-gray-800 shadow-lg overflow-hidden bg-white dark:bg-gray-800">
-                <ClickableImage
-                  src="/profilo.png"
-                  alt="Panarea Burgers - Profilo"
-                  fill
-                  className="rounded-full"
-                  priority
-                />
+              <div className="w-32 h-32 md:w-40 md:h-40 rounded-full border-4 border-white dark:border-gray-800 shadow-lg overflow-visible bg-white dark:bg-gray-800">
+                <div className="w-full h-full rounded-full overflow-hidden">
+                  <ClickableImage
+                    src="/profilo.png"
+                    alt="Panarea Burgers - Profilo"
+                    fill
+                    className="rounded-full"
+                    priority
+                  />
+                </div>
               </div>
             </div>
           </div>
