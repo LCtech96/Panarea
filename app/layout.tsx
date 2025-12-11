@@ -1,6 +1,21 @@
 import type { Metadata } from 'next'
+import { Permanent_Marker, Kalam } from 'next/font/google'
 import './globals.css'
 import { Providers } from '@/components/Providers'
+
+const permanentMarker = Permanent_Marker({
+  weight: '400',
+  subsets: ['latin'],
+  variable: '--font-permanent-marker',
+  display: 'swap',
+})
+
+const kalam = Kalam({
+  weight: ['400', '700'],
+  subsets: ['latin'],
+  variable: '--font-kalam',
+  display: 'swap',
+})
 
 export const metadata: Metadata = {
   title: 'Panarea Burgers - Terrasini',
@@ -13,12 +28,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="it" className="bg-white">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Kalam:wght@400;700&display=swap" rel="stylesheet" />
-      </head>
+    <html lang="it" className={`${permanentMarker.variable} ${kalam.variable} bg-white`}>
       <body className="bg-white dark:bg-gray-900 transition-colors">
         <Providers>
           {children}

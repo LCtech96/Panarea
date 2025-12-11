@@ -87,6 +87,7 @@ export default function ImageUpload({ category, onUploadSuccess, onUploadError }
 
       {preview && (
         <div className="mt-4">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={preview}
             alt="Preview"

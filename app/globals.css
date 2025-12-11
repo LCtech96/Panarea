@@ -42,7 +42,7 @@ main {
 /* Panarea Burgers Title Style - Gommoso e Moderno */
 .panarea-title {
   font-weight: 900;
-  font-family: 'Arial Black', 'Helvetica Neue', Arial, sans-serif;
+  font-family: var(--font-permanent-marker), 'Arial Black', 'Helvetica Neue', Arial, sans-serif;
   color: #ffffff;
   text-shadow: 
     /* Contorno giallo/oro - multipli livelli per effetto spesso */
@@ -92,7 +92,7 @@ main {
 
 /* Panarea Subtitle Style - Calligrafico/Manoscritto */
 .panarea-subtitle {
-  font-family: 'Kalam', 'Permanent Marker', 'Brush Script MT', 'Lucida Handwriting', cursive, sans-serif;
+  font-family: var(--font-kalam), 'Kalam', 'Permanent Marker', 'Brush Script MT', 'Lucida Handwriting', cursive, sans-serif;
   font-weight: 700;
   font-style: italic;
   color: #DC2626;

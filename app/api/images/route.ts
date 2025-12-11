@@ -62,8 +62,8 @@ export async function POST(request: NextRequest) {
       file_path: filePath,
       file_size: file.size,
       mime_type: file.type,
-      alt_text: altText || null,
-      category: category || null,
+      alt_text: altText || undefined,
+      category: category || undefined,
     })
 
     return NextResponse.json({ success: true, data: image })
