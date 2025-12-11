@@ -57,6 +57,9 @@ export default function ImageModal({ src, alt, isOpen, onClose }: ImageModalProp
             className="object-contain"
             onClick={(e) => e.stopPropagation()}
             priority
+            quality={100}
+            sizes="100vw"
+            unoptimized={src.startsWith('/') && (src.endsWith('.png') || src.endsWith('.jpg') || src.endsWith('.jpeg'))}
           />
         </div>
       </div>
