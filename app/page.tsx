@@ -119,7 +119,7 @@ export default function Home() {
         </div>
 
         {/* Google Maps Section */}
-        <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 pb-16 md:pb-8">
           <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
             <div className="text-center mb-6">
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-2">
