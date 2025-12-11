@@ -37,9 +37,12 @@ export default function ClickableImage({
               src={src}
               alt={alt}
               fill
-              className="object-cover"
+              className="object-cover rounded-full"
               priority={priority}
-              sizes="100vw"
+              sizes="(max-width: 768px) 128px, 160px"
+              onError={(e) => {
+                console.error('Image load error:', src)
+              }}
             />
           </div>
         ) : (
