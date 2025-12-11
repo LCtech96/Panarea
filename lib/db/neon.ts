@@ -14,7 +14,8 @@ export const sql = databaseUrl ? neon(databaseUrl) : null
 // Helper function to execute queries
 export async function query<T = any>(queryString: string, params?: any[]): Promise<T[]> {
   if (!sql) {
-    throw new Error('Database connection not configured. Please set DATABASE_URL in .env.local')
+    console.warn('Database connection not configured. Please set DATABASE_URL in environment variables.')
+    return [] as T[]
   }
   
   try {

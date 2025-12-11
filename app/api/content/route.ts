@@ -23,6 +23,10 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ success: true, data: content })
   } catch (error) {
     console.error('Error fetching content:', error)
+    // Se il database non è configurato, restituisci un array vuoto invece di un errore
+    if (error instanceof Error && error.message.includes('Database connection not configured')) {
+      return NextResponse.json({ success: true, data: [] })
+    }
     return NextResponse.json(
       { success: false, error: 'Failed to fetch content' },
       { status: 500 }
