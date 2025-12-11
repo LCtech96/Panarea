@@ -5,7 +5,6 @@ import GoogleMaps from '@/components/GoogleMaps'
 import ContactSection from '@/components/ContactSection'
 import ClickableImage from '@/components/ClickableImage'
 import Highlights from '@/components/Highlights'
-import Image from 'next/image'
 
 export default function Home() {
   return (
@@ -27,14 +26,13 @@ export default function Home() {
             />
             {/* Profile Picture - Overlay on Banner */}
             <div className="absolute bottom-0 left-4 md:left-8 transform translate-y-1/2 z-10">
-              <div className="relative w-32 h-32 md:w-40 md:h-40 rounded-full border-4 border-white dark:border-gray-800 shadow-lg overflow-hidden bg-white dark:bg-gray-800">
-                <Image
+              <div className="w-32 h-32 md:w-40 md:h-40 rounded-full border-4 border-white dark:border-gray-800 shadow-lg overflow-hidden bg-white dark:bg-gray-800">
+                <ClickableImage
                   src="/profilo.png"
                   alt="Panarea Burgers - Profilo"
                   fill
-                  className="object-cover rounded-full"
+                  className="rounded-full"
                   priority
-                  sizes="(max-width: 768px) 128px, 160px"
                 />
               </div>
             </div>

@@ -28,7 +28,7 @@ export default function ClickableImage({
   return (
     <>
       <div
-        className={`relative cursor-pointer hover:opacity-90 transition-opacity ${className}`}
+        className={`relative cursor-pointer hover:opacity-90 transition-opacity ${fill ? 'w-full h-full' : ''} ${className}`}
         onClick={() => setIsModalOpen(true)}
       >
         {fill ? (
