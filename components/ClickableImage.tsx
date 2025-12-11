@@ -32,19 +32,17 @@ export default function ClickableImage({
         onClick={() => setIsModalOpen(true)}
       >
         {fill ? (
-          <div className="relative w-full h-full">
-            <Image
-              src={src}
-              alt={alt}
-              fill
-              className="object-cover rounded-full"
-              priority={priority}
-              sizes="(max-width: 768px) 128px, 160px"
-              onError={(e) => {
-                console.error('Image load error:', src)
-              }}
-            />
-          </div>
+          <Image
+            src={src}
+            alt={alt}
+            fill
+            className="object-cover"
+            priority={priority}
+            sizes="(max-width: 768px) 128px, 160px"
+            onError={(e) => {
+              console.error('Image load error:', src)
+            }}
+          />
         ) : (
           <div className="relative w-full" style={{ aspectRatio: width && height ? `${width}/${height}` : 'auto' }}>
             <Image

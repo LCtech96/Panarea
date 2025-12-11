@@ -32,15 +32,13 @@ export default function Home() {
               {/* Profile Picture */}
               <div className="absolute -top-20 md:-top-24 left-4 md:left-8">
                 <div className="relative w-32 h-32 md:w-40 md:h-40 rounded-full border-4 border-white dark:border-gray-800 shadow-lg overflow-hidden bg-white dark:bg-gray-800">
-                  <div className="relative w-full h-full">
-                    <ClickableImage
-                      src="/profilo.png"
-                      alt="Panarea Burgers - Profilo"
-                      fill
-                      className="rounded-full object-cover"
-                      priority
-                    />
-                  </div>
+                  <ClickableImage
+                    src="/profilo.png"
+                    alt="Panarea Burgers - Profilo"
+                    fill
+                    className="rounded-full"
+                    priority
+                  />
                 </div>
               </div>
 
