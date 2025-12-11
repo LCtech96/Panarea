@@ -24,26 +24,26 @@ export default function Home() {
               className="w-full h-full"
               priority
             />
+            {/* Profile Picture - Overlay on Banner */}
+            <div className="absolute bottom-0 left-4 md:left-8 transform translate-y-1/2">
+              <div className="relative w-32 h-32 md:w-40 md:h-40 rounded-full border-4 border-white dark:border-gray-800 shadow-lg overflow-hidden bg-white dark:bg-gray-800">
+                <ClickableImage
+                  src="/profilo.png"
+                  alt="Panarea Burgers - Profilo"
+                  fill
+                  className="rounded-full"
+                  priority
+                />
+              </div>
+            </div>
           </div>
 
           {/* Profile Section */}
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="relative">
-              {/* Profile Picture */}
-              <div className="absolute -top-20 md:-top-24 left-4 md:left-8">
-                <div className="relative w-32 h-32 md:w-40 md:h-40 rounded-full border-4 border-white dark:border-gray-800 shadow-lg overflow-hidden bg-white dark:bg-gray-800">
-                  <ClickableImage
-                    src="/profilo.png"
-                    alt="Panarea Burgers - Profilo"
-                    fill
-                    className="rounded-full"
-                    priority
-                  />
-                </div>
-              </div>
 
               {/* Profile Info */}
-              <div className="pt-24 md:pt-28 pb-6">
+              <div className="pt-20 md:pt-24 pb-6">
                 <h1 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-2">
                   Panarea Burgers
                 </h1>
