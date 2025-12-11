@@ -104,7 +104,7 @@ export default function Navbar() {
                   Clicca sul pulsante qui sotto per lasciare una recensione su Google
                 </p>
                 <a
-                  href="https://maps.app.goo.gl/XpLBDAhPbr5Ug4qo7"
+                  href="https://share.google/1syh5aJu6nf3sKz7g"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-full transition-colors inline-flex items-center gap-2"
