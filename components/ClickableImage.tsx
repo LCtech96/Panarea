@@ -12,6 +12,8 @@ interface ClickableImageProps {
   width?: number
   height?: number
   priority?: boolean
+  quality?: number
+  sizes?: string
 }
 
 export default function ClickableImage({
@@ -22,6 +24,8 @@ export default function ClickableImage({
   width,
   height,
   priority = false,
+  quality = 90,
+  sizes,
 }: ClickableImageProps) {
   const [isModalOpen, setIsModalOpen] = useState(false)
 
@@ -38,7 +42,9 @@ export default function ClickableImage({
             fill
             className="object-cover"
             priority={priority}
-            sizes="(max-width: 768px) 128px, 160px"
+            quality={quality}
+            sizes={sizes || "(max-width: 768px) 100vw, 100vw"}
+            unoptimized={src.startsWith('/') && (src.endsWith('.png') || src.endsWith('.jpg') || src.endsWith('.jpeg'))}
             onError={(e) => {
               console.error('Image load error:', src)
             }}

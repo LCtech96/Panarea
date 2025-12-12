@@ -23,6 +23,8 @@ export default function Home() {
               fill
               className="w-full h-full"
               priority
+              quality={100}
+              sizes="100vw"
             />
             {/* Profile Picture - Overlay on Banner */}
             <div className="absolute bottom-0 left-4 md:left-8 transform translate-y-1/2 z-10">
@@ -136,6 +138,25 @@ export default function Home() {
 
       {/* Contact Section */}
       <ContactSection />
+
+      {/* Facevoice.ai Attribution */}
+      <footer className="bg-gray-900 text-white py-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <p className="text-sm text-gray-400">
+              Creato da{' '}
+              <a
+                href="https://facevoice.ai/ai-chat"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-orange-400 hover:text-orange-500 transition-colors font-semibold"
+              >
+                Facevoice.ai
+              </a>
+            </p>
+          </div>
+        </div>
+      </footer>
     </main>
   )
 }
