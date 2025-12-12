@@ -1,11 +1,11 @@
 'use client'
 
 import { useState } from 'react'
+import Link from 'next/link'
 import ThemeToggle from './ThemeToggle'
 
 export default function Navbar() {
   const [showReviewModal, setShowReviewModal] = useState(false)
-  const [showDisclaimerModal, setShowDisclaimerModal] = useState(false)
 
   const handleReviewClick = () => {
     setShowReviewModal(true)
@@ -15,22 +15,14 @@ export default function Navbar() {
     setShowReviewModal(false)
   }
 
-  const handleDisclaimerClick = () => {
-    setShowDisclaimerModal(true)
-  }
-
-  const closeDisclaimerModal = () => {
-    setShowDisclaimerModal(false)
-  }
-
   return (
     <>
       <nav className="fixed bottom-0 left-0 right-0 md:top-0 md:bottom-auto z-50 bg-white shadow-lg md:shadow-md dark:bg-gray-800 dark:text-white border-t md:border-t-0 md:border-b border-gray-200 dark:border-gray-700">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-around items-center h-16 md:h-20">
             {/* Menù Button */}
-            <button
-              onClick={handleDisclaimerClick}
+            <Link
+              href="/menu"
               className="flex flex-col items-center justify-center px-3 py-2 text-sm md:text-base font-medium text-gray-700 hover:text-orange-600 transition-colors dark:text-gray-200 dark:hover:text-orange-500"
             >
               <svg
@@ -47,11 +39,11 @@ export default function Navbar() {
                 />
               </svg>
               <span className="text-xs md:text-sm">Menù</span>
-            </button>
+            </Link>
 
             {/* Chi Siamo Button */}
-            <button
-              onClick={handleDisclaimerClick}
+            <Link
+              href="/chi-siamo"
               className="flex flex-col items-center justify-center px-3 py-2 text-sm md:text-base font-medium text-gray-700 hover:text-orange-600 transition-colors dark:text-gray-200 dark:hover:text-orange-500"
             >
               <svg
@@ -68,7 +60,7 @@ export default function Navbar() {
                 />
               </svg>
               <span className="text-xs md:text-sm">Chi Siamo</span>
-            </button>
+            </Link>
 
             {/* Google Reviews Button - Central */}
             <button
@@ -86,8 +78,8 @@ export default function Navbar() {
             </button>
 
             {/* Asporto Button */}
-            <button
-              onClick={handleDisclaimerClick}
+            <Link
+              href="/asporto"
               className="flex flex-col items-center justify-center px-3 py-2 text-sm md:text-base font-medium text-gray-700 hover:text-orange-600 transition-colors dark:text-gray-200 dark:hover:text-orange-500"
             >
               <svg
@@ -104,7 +96,7 @@ export default function Navbar() {
                 />
               </svg>
               <span className="text-xs md:text-sm">Asporto</span>
-            </button>
+            </Link>
             
             {/* Theme Toggle */}
             <div className="flex items-center">
@@ -113,36 +105,6 @@ export default function Navbar() {
           </div>
         </div>
       </nav>
-
-      {/* Disclaimer Modal */}
-      {showDisclaimerModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 p-4">
-          <div className="bg-white rounded-lg max-w-md w-full overflow-hidden flex flex-col dark:bg-gray-900 dark:text-white">
-            <div className="flex justify-between items-center p-4 border-b dark:border-gray-700">
-              <h2 className="text-xl font-bold text-gray-800 dark:text-white">Info</h2>
-              <button
-                onClick={closeDisclaimerModal}
-                className="text-gray-500 hover:text-gray-700 text-2xl dark:text-gray-400 dark:hover:text-gray-200"
-              >
-                ×
-              </button>
-            </div>
-            <div className="p-6">
-              <p className="text-gray-700 text-center text-lg dark:text-gray-300">
-                Stiamo lavorando per aggiungere tutte queste funzionalità
-              </p>
-            </div>
-            <div className="p-4 border-t dark:border-gray-700">
-              <button
-                onClick={closeDisclaimerModal}
-                className="w-full bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 rounded-lg transition-colors font-semibold"
-              >
-                Chiudi
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
 
       {/* Google Reviews Modal */}
       {showReviewModal && (

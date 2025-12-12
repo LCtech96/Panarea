@@ -58,3 +58,4 @@ CREATE INDEX IF NOT EXISTS idx_menu_items_available ON menu_items(available);
 CREATE INDEX IF NOT EXISTS idx_reviews_approved ON reviews(approved);
 
 
+

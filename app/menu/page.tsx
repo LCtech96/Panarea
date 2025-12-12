@@ -20,53 +20,135 @@ interface MenuItem {
   bestSeller?: boolean
 }
 
+// Lista di ingredienti aggiuntivi disponibili
+const availableAddOns = [
+  'Lattuga',
+  'Pomodoro',
+  'Cipolla',
+  'Rucola',
+  'Provola',
+  'Mozzarella',
+  'Gorgonzola',
+  'Caciocavallo',
+  'Primosale',
+  'Leerdammer',
+  'Stracciatella',
+  'Scamorza',
+  'Emmental',
+  'Philadelphia',
+  'Salsa tzatziki',
+  'Patè di pomodoro secco',
+  'Patè di olive nere',
+  'Pesto di pistacchio',
+  'Olio EVO',
+  'Scaglie di grana',
+  'Extra salsa',
+  'Extra formaggio',
+]
+
 const menuItems: MenuItem[] = [
   {
     id: '1',
-    name: 'Panarea Burger',
-    description: 'Hamburger classico con ingredienti freschi',
-    price: 8.50,
-    category: 'burger',
-    ingredients: ['Pane', 'Carne', 'Lattuga', 'Pomodoro', 'Cipolla', 'Salsa speciale'],
+    name: 'Cotto di Te',
+    description: 'Prosciutto cotto Ferrarini, a scelta tra (Provola, Mozzarella, Gorgonzola, Caciocavallo), Pomodoro',
+    price: 6.50,
+    category: 'panino',
+    ingredients: ['Prosciutto cotto Ferrarini', 'Formaggio a scelta (Provola/Mozzarella/Gorgonzola/Caciocavallo)', 'Pomodoro'],
+    allergens: ['Glutine', 'Latte'],
+  },
+  {
+    id: '2',
+    name: 'Bonito',
+    description: 'Prosciutto crudo San Daniele, rucola, scaglie di grana, olio EVO',
+    price: 7.50,
+    category: 'panino',
+    ingredients: ['Prosciutto crudo San Daniele', 'Rucola', 'Scaglie di grana', 'Olio EVO'],
     allergens: ['Glutine', 'Latte'],
     bestSeller: true,
   },
   {
-    id: '2',
-    name: 'Panino Siciliano',
-    description: 'Panino con ingredienti tipici siciliani',
-    price: 7.50,
+    id: '3',
+    name: 'Sicily',
+    description: 'Salame dolce toscano, a scelta tra (Provola, Primosale, Leerdammer), Philadelphia',
+    price: 6.50,
     category: 'panino',
-    ingredients: ['Pane', 'Prosciutto', 'Formaggio', 'Melanzane', 'Peperoni'],
+    ingredients: ['Salame dolce toscano', 'Formaggio a scelta (Provola/Primosale/Leerdammer)', 'Philadelphia'],
     allergens: ['Glutine', 'Latte'],
   },
   {
-    id: '3',
-    name: 'Veggie Burger',
-    description: 'Hamburger vegetariano con verdure grigliate',
-    price: 7.00,
-    category: 'burger',
-    ingredients: ['Pane', 'Verdure grigliate', 'Lattuga', 'Pomodoro', 'Salsa vegana'],
-    allergens: ['Glutine'],
-    vegan: true,
-    glutenFree: false,
+    id: '4',
+    name: 'Vulcano',
+    description: 'Salame piccante, a scelta tra (Primosale, Caciotta affumicata, Scamorza), patè di pomodoro secco',
+    price: 6.50,
+    category: 'panino',
+    ingredients: ['Salame piccante', 'Formaggio a scelta (Primosale/Caciotta affumicata/Scamorza)', 'Patè di pomodoro secco'],
+    allergens: ['Glutine', 'Latte'],
   },
   {
-    id: '4',
-    name: 'Gluten Free Burger',
-    description: 'Hamburger senza glutine',
-    price: 9.00,
-    category: 'burger',
-    ingredients: ['Pane senza glutine', 'Carne', 'Lattuga', 'Pomodoro'],
-    allergens: ['Latte'],
-    glutenFree: true,
+    id: '5',
+    name: 'Fantasy',
+    description: 'Mortadella, a scelta tra (Stracciatella, Fettuccine al limone)',
+    price: 5.50,
+    category: 'panino',
+    ingredients: ['Mortadella', 'A scelta (Stracciatella/Fettuccine al limone)'],
+    allergens: ['Glutine', 'Latte'],
+  },
+  {
+    id: '6',
+    name: 'Nonna Piera',
+    description: 'Melanzane fritte, lattuga, cipolla, salsa tzatziki',
+    price: 7.50,
+    category: 'panino',
+    ingredients: ['Melanzane fritte', 'Lattuga', 'Cipolla', 'Salsa tzatziki'],
+    allergens: ['Glutine', 'Latte'],
+  },
+  {
+    id: '7',
+    name: 'Tentazione',
+    description: 'Porchetta artigianale, Emmental svizzero, patè di olive nere, lattuga',
+    price: 8.00,
+    category: 'panino',
+    ingredients: ['Porchetta artigianale', 'Emmental svizzero', 'Patè di olive nere', 'Lattuga'],
+    allergens: ['Glutine', 'Latte'],
+    bestSeller: true,
+  },
+  {
+    id: '8',
+    name: 'Topazio',
+    description: 'Speck, stracciatella, pesto di pistacchio',
+    price: 7.50,
+    category: 'panino',
+    ingredients: ['Speck', 'Stracciatella', 'Pesto di pistacchio'],
+    allergens: ['Glutine', 'Latte'],
+  },
+  {
+    id: '9',
+    name: 'Mordicchio Simply',
+    description: 'Due ingredienti a scelta',
+    price: 5.00,
+    category: 'panino',
+    ingredients: ['Due ingredienti a scelta'],
+    allergens: ['Glutine'],
+  },
+  {
+    id: '10',
+    name: 'Sweet',
+    description: 'Panino e Nutella',
+    price: 3.00,
+    category: 'panino',
+    ingredients: ['Pane', 'Nutella'],
+    allergens: ['Glutine', 'Latte'],
   },
 ]
 
 export default function MenuPage() {
   const { addToCart } = useOrder()
   const router = useRouter()
-  const [selectedItems, setSelectedItems] = useState<Record<string, { quantity: number; modifications: string[] }>>({})
+  const [selectedItems, setSelectedItems] = useState<Record<string, { 
+    quantity: number
+    removals: string[]
+    additions: string[]
+  }>>({})
 
   const handleQuantityChange = (itemId: string, quantity: number) => {
     setSelectedItems((prev) => ({
@@ -74,20 +156,34 @@ export default function MenuPage() {
       [itemId]: {
         ...prev[itemId],
         quantity: Math.max(0, quantity),
-        modifications: prev[itemId]?.modifications || [],
+        removals: prev[itemId]?.removals || [],
+        additions: prev[itemId]?.additions || [],
       },
     }))
   }
 
-  const toggleModification = (itemId: string, modification: string) => {
+  const toggleRemoval = (itemId: string, ingredient: string) => {
     setSelectedItems((prev) => {
-      const current = prev[itemId] || { quantity: 1, modifications: [] }
-      const modifications = current.modifications.includes(modification)
-        ? current.modifications.filter((m) => m !== modification)
-        : [...current.modifications, modification]
+      const current = prev[itemId] || { quantity: 1, removals: [], additions: [] }
+      const removals = current.removals.includes(ingredient)
+        ? current.removals.filter((r) => r !== ingredient)
+        : [...current.removals, ingredient]
       return {
         ...prev,
-        [itemId]: { ...current, modifications },
+        [itemId]: { ...current, removals },
+      }
+    })
+  }
+
+  const toggleAddition = (itemId: string, ingredient: string) => {
+    setSelectedItems((prev) => {
+      const current = prev[itemId] || { quantity: 1, removals: [], additions: [] }
+      const additions = current.additions.includes(ingredient)
+        ? current.additions.filter((a) => a !== ingredient)
+        : [...current.additions, ingredient]
+      return {
+        ...prev,
+        [itemId]: { ...current, additions },
       }
     })
   }
@@ -99,9 +195,13 @@ export default function MenuPage() {
       return
     }
 
-    const modifications = selection.modifications.length > 0
-      ? [`Modifiche: ${selection.modifications.join(', ')}`]
-      : []
+    const modifications: string[] = []
+    if (selection.removals.length > 0) {
+      modifications.push(`Rimuovi: ${selection.removals.join(', ')}`)
+    }
+    if (selection.additions.length > 0) {
+      modifications.push(`Aggiungi: ${selection.additions.join(', ')}`)
+    }
 
     addToCart({
       id: `${item.id}-${Date.now()}`,
@@ -124,14 +224,23 @@ export default function MenuPage() {
           <div className="mb-6">
             <BackButton />
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white text-center mb-12">
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white text-center mb-8">
             Il Nostro Menù
           </h1>
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-800 dark:text-white text-center mb-12">
+            Panini Freddi e Piastrati
+          </h2>
           
           <div className="space-y-6">
             {menuItems.map((item) => {
-              const selection = selectedItems[item.id] || { quantity: 0, modifications: [] }
-              const availableModifications = ['Senza cipolla', 'Senza pomodoro', 'Extra formaggio', 'Extra salsa']
+              const selection = selectedItems[item.id] || { quantity: 0, removals: [], additions: [] }
+              
+              // Filtra gli ingredienti rimovibili (solo quelli presenti nel panino)
+              // Rimuove ingredienti generici come "Formaggio a scelta" o "A scelta"
+              const removableIngredients = item.ingredients.filter(
+                ing => !ing.toLowerCase().includes('scelta') && 
+                       !ing.toLowerCase().includes('due ingredienti')
+              )
 
               return (
                 <div
@@ -180,22 +289,47 @@ export default function MenuPage() {
                     )}
                   </div>
 
+                  {/* Sezione Rimozioni */}
+                  {removableIngredients.length > 0 && (
+                    <div className="mb-4">
+                      <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
+                        Rimuovi ingredienti (opzionale):
+                      </label>
+                      <div className="flex flex-wrap gap-2">
+                        {removableIngredients.map((ingredient) => (
+                          <button
+                            key={ingredient}
+                            onClick={() => toggleRemoval(item.id, ingredient)}
+                            className={`px-3 py-1 rounded-full text-sm transition-colors ${
+                              selection.removals.includes(ingredient)
+                                ? 'bg-red-500 text-white'
+                                : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300'
+                            }`}
+                          >
+                            - {ingredient}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Sezione Aggiunte */}
                   <div className="mb-4">
                     <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
-                      Modifiche (opzionale):
+                      Aggiungi ingredienti (opzionale):
                     </label>
                     <div className="flex flex-wrap gap-2">
-                      {availableModifications.map((mod) => (
+                      {availableAddOns.map((addOn) => (
                         <button
-                          key={mod}
-                          onClick={() => toggleModification(item.id, mod)}
+                          key={addOn}
+                          onClick={() => toggleAddition(item.id, addOn)}
                           className={`px-3 py-1 rounded-full text-sm transition-colors ${
-                            selection.modifications.includes(mod)
-                              ? 'bg-orange-500 text-white'
+                            selection.additions.includes(addOn)
+                              ? 'bg-green-500 text-white'
                               : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300'
                           }`}
                         >
-                          {mod}
+                          + {addOn}
                         </button>
                       ))}
                     </div>
@@ -236,4 +370,4 @@ export default function MenuPage() {
       <ContactSection />
     </main>
   )
-}
+} 
