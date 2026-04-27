@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Permanent_Marker, Kalam } from 'next/font/google'
+import { Permanent_Marker, Kalam, Great_Vibes } from 'next/font/google'
 import './globals.css'
 import { Providers } from '@/components/Providers'
 
@@ -17,6 +17,13 @@ const kalam = Kalam({
   display: 'swap',
 })
 
+const greatVibes = Great_Vibes({
+  weight: '400',
+  subsets: ['latin'],
+  variable: '--font-title-script',
+  display: 'swap',
+})
+
 export const metadata: Metadata = {
   title: 'Panarea Burgers - Terrasini',
   description: 'Panarea Burgers - Hamburger e panini a Terrasini, Palermo',
@@ -28,7 +35,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="it" className={`${permanentMarker.variable} ${kalam.variable} bg-white`}>
+    <html lang="it" className={`${permanentMarker.variable} ${kalam.variable} ${greatVibes.variable} bg-white`}>
       <body className="bg-white dark:bg-gray-900 transition-colors">
         <Providers>
           {children}

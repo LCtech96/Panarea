@@ -23,6 +23,17 @@ body {
   padding: 0;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-title-script), 'Brush Script MT', 'Lucida Handwriting', cursive;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+}
+
 html {
   overflow-x: hidden;
   margin: 0;
