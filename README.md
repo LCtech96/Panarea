@@ -30,18 +30,14 @@ Apri [http://localhost:3000](http://localhost:3000) nel browser.
 
 ## Configurazione Database (Futura)
 
-### Supabase
-Aggiungi al file `.env.local`:
-```
-NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
-NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
-```
+### Variabili d'ambiente
+Vedi `.env.example` per l'elenco delle chiavi. Copia il file in `.env.local` e compila i valori (`.env.local` non va mai committato).
 
-### Neon
-Il database Neon è già configurato nel file `.env.local`:
-```
-DATABASE_URL=postgresql://neondb_owner:npg_fduaq7vIs2mP@ep-royal-paper-ahdjmjcx-pooler.c-3.us-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require
-```
+### Supabase (URL + anon + service role)
+Usa `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY` e `SUPABASE_SERVICE_ROLE_KEY` (solo server) come in `.env.example`.
+
+### Postgres (query SQL via `lib/db/neon.ts`)
+Imposta `DATABASE_URL` con la connection string del pooler Supabase (o Neon). Esegui lo schema SQL da `lib/db/schema.sql` nel progetto Supabase se usi quel database.
 
 Per usare il database, importa la funzione `query` da `@/lib/db/neon`:
 ```typescript
