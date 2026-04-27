@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import ImageUpload from '@/components/ImageUpload'
 import Image from 'next/image'
+import AdminMenuPanel from '@/components/AdminMenuPanel'
 
 interface ImageData {
   id: number
@@ -178,15 +179,14 @@ export default function AdminPage() {
         {activeTab === 'menu' && (
           <div className="bg-white rounded-lg shadow p-6">
             <h2 className="text-xl font-semibold mb-4">Gestione Menu</h2>
-            <p className="text-gray-600">
-              Funzionalità in arrivo. Potrai gestire i prodotti del menu da qui.
-            </p>
+            <AdminMenuPanel />
           </div>
         )}
       </div>
     </div>
   )
 }
+
 
 
 
