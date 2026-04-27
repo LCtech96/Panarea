@@ -15,7 +15,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     setMounted(true)
-    const savedTheme = localStorage.getItem('panarea_theme') as 'light' | 'dark' | null
+    const savedTheme = localStorage.getItem('gianago_theme') as 'light' | 'dark' | null
     if (savedTheme) {
       setTheme(savedTheme)
     } else {
@@ -27,7 +27,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     if (mounted) {
       document.documentElement.classList.toggle('dark', theme === 'dark')
-      localStorage.setItem('panarea_theme', theme)
+      localStorage.setItem('gianago_theme', theme)
     }
   }, [theme, mounted])
 

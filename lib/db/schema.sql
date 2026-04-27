@@ -1,4 +1,4 @@
--- Schema del database per Panarea Burgers
+-- Schema del database per GianAgo Risto-pub
 -- Esegui questo script nel tuo database Neon per creare le tabelle
 
 -- Tabella per le immagini
@@ -56,6 +56,7 @@ CREATE INDEX IF NOT EXISTS idx_images_category ON images(category);
 CREATE INDEX IF NOT EXISTS idx_menu_items_category ON menu_items(category);
 CREATE INDEX IF NOT EXISTS idx_menu_items_available ON menu_items(available);
 CREATE INDEX IF NOT EXISTS idx_reviews_approved ON reviews(approved);
+
 
 
 

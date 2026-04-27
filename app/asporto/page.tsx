@@ -11,7 +11,7 @@ export default function AsportoPage() {
   const formatOrderForWhatsApp = () => {
     if (orders.length === 0) return ''
 
-    let message = '🍔 *ORDINE PANAREA BURGERS*\n\n'
+    let message = '🍔 *ORDINE GIANAGO RISTO-PUB*\n\n'
     
     orders.forEach((item, index) => {
       message += `${index + 1}. *${item.name}*\n`

@@ -19,7 +19,7 @@ export default function Home() {
           <div className="relative w-full h-[300px] md:h-[400px] bg-gray-200 dark:bg-gray-700">
             <ClickableImage
               src="/banner1.png"
-              alt="Panarea Burgers - Banner"
+              alt="GianAgo Risto-pub - Banner"
               fill
               className="w-full h-full"
               priority
@@ -32,7 +32,7 @@ export default function Home() {
                 <div className="w-full h-full rounded-full overflow-hidden">
                   <ClickableImage
                     src="/profilo.png"
-                    alt="Panarea Burgers - Profilo"
+                    alt="GianAgo Risto-pub - Profilo"
                     fill
                     className="rounded-full"
                     priority
@@ -49,7 +49,7 @@ export default function Home() {
               {/* Profile Info */}
               <div className="pt-20 md:pt-24 pb-6">
                 <h1 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-2">
-                  Panarea Burgers
+                  GianAgo Risto-pub
                 </h1>
                 <p className="text-lg text-gray-600 dark:text-gray-300 mb-4">
                   Panineria • Terrasini, Palermo
@@ -72,7 +72,7 @@ export default function Home() {
                 <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Chi Siamo</h2>
                 <div className="space-y-4 text-gray-700 dark:text-gray-300">
                   <p className="leading-relaxed">
-                    Benvenuti da <strong>Panarea Burgers</strong>, il nuovo punto di riferimento 
+                    Benvenuti da <strong>GianAgo Risto-pub</strong>, il nuovo punto di riferimento 
                     per gli amanti dei burger e dei panini a Terrasini, nella provincia di Palermo.
                   </p>
                   
@@ -96,7 +96,7 @@ export default function Home() {
               <div className="bg-white dark:bg-gray-800 rounded-lg shadow overflow-hidden">
                 <ClickableImage
                   src="/pani.png"
-                  alt="Panarea Burgers - Stile"
+                  alt="GianAgo Risto-pub - Stile"
                   width={800}
                   height={600}
                   className="w-full"

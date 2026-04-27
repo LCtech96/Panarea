@@ -25,8 +25,8 @@ const greatVibes = Great_Vibes({
 })
 
 export const metadata: Metadata = {
-  title: 'Panarea Burgers - Terrasini',
-  description: 'Panarea Burgers - Hamburger e panini a Terrasini, Palermo',
+  title: 'GianAgo Risto-pub - Terrasini',
+  description: 'GianAgo Risto-pub - Hamburger e panini a Terrasini, Palermo',
 }
 
 export default function RootLayout({

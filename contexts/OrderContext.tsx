@@ -27,7 +27,7 @@ export function OrderProvider({ children }: { children: ReactNode }) {
 
   // Carica ordini da localStorage al mount
   useEffect(() => {
-    const savedOrders = localStorage.getItem('panarea_orders')
+    const savedOrders = localStorage.getItem('gianago_orders')
     if (savedOrders) {
       setOrders(JSON.parse(savedOrders))
     }
@@ -35,7 +35,7 @@ export function OrderProvider({ children }: { children: ReactNode }) {
 
   // Salva ordini in localStorage quando cambiano
   useEffect(() => {
-    localStorage.setItem('panarea_orders', JSON.stringify(orders))
+    localStorage.setItem('gianago_orders', JSON.stringify(orders))
   }, [orders])
 
   const addToCart = (item: OrderItem) => {
@@ -97,6 +97,7 @@ export function useOrder() {
   }
   return context
 }
+
 
 
 

@@ -48,17 +48,12 @@ export default function ChiSiamoPage() {
                   <div className="order-1 md:order-2">
                     <div className="relative w-full h-[300px] md:h-[400px] rounded-lg overflow-hidden bg-gray-200 dark:bg-gray-700">
                       <ClickableImage
-                        src="/team.jpg"
-                        alt="Il Team di Panarea Burgers"
+                        src="/pana.png"
+                        alt="Il Team di GianAgo Risto-pub"
                         fill
                         className="object-cover"
                         priority
                       />
-                      <div className="absolute inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50">
-                        <p className="text-white text-center px-4">
-                          Aggiungi l&apos;immagine del team in /public/team.jpg
-                        </p>
-                      </div>
                     </div>
                   </div>
                 </div>
@@ -75,17 +70,12 @@ export default function ChiSiamoPage() {
                   <div>
                     <div className="relative w-full h-[300px] md:h-[400px] rounded-lg overflow-hidden bg-gray-200 dark:bg-gray-700">
                       <ClickableImage
-                        src="/locale.jpg"
-                        alt="Il Locale di Panarea Burgers"
+                        src="/lo.png"
+                        alt="Il Locale di GianAgo Risto-pub"
                         fill
                         className="object-cover"
                         priority
                       />
-                      <div className="absolute inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50">
-                        <p className="text-white text-center px-4">
-                          Aggiungi l&apos;immagine del locale in /public/locale.jpg
-                        </p>
-                      </div>
                     </div>
                   </div>
                   <div>
@@ -137,6 +127,7 @@ export default function ChiSiamoPage() {
     </main>
   )
 }
+
 
 
 

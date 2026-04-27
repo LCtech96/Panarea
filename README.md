@@ -1,6 +1,6 @@
-# Panarea Burgers - Website
+# GianAgo Risto-pub - Website
 
-Sito web per Panarea Burgers, un locale di hamburger e panini a Terrasini, Palermo.
+Sito web per GianAgo Risto-pub, un locale di hamburger e panini a Terrasini, Palermo.
 
 ## Tecnologie Utilizzate
 

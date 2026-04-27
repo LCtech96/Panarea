@@ -50,8 +50,8 @@ main {
   }
 }
 
-/* Panarea Burgers Title Style - Gommoso e Moderno */
-.panarea-title {
+/* GianAgo Risto-pub Title Style - Gommoso e Moderno */
+.gianago-title {
   font-weight: 900;
   font-family: var(--font-permanent-marker), 'Arial Black', 'Helvetica Neue', Arial, sans-serif;
   color: #ffffff;
@@ -94,15 +94,15 @@ main {
 }
 
 @media (max-width: 640px) {
-  .panarea-title {
+  .gianago-title {
     -webkit-text-stroke: 1.5px #FFD700;
     text-stroke: 1.5px #FFD700;
     transform: perspective(400px) rotateX(1deg) scale(1.01);
   }
 }
 
-/* Panarea Subtitle Style - Calligrafico/Manoscritto */
-.panarea-subtitle {
+/* GianAgo Risto-pub Subtitle Style - Calligrafico/Manoscritto */
+.gianago-subtitle {
   font-family: var(--font-kalam), 'Kalam', 'Permanent Marker', 'Brush Script MT', 'Lucida Handwriting', cursive, sans-serif;
   font-weight: 700;
   font-style: italic;
@@ -131,17 +131,17 @@ main {
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
 }
 
-.panarea-subtitle span {
+.gianago-subtitle span {
   display: inline-block;
   transform: rotate(1deg);
 }
 
-.panarea-subtitle span:nth-child(2n) {
+.gianago-subtitle span:nth-child(2n) {
   transform: rotate(-1deg);
 }
 
 @media (max-width: 640px) {
-  .panarea-subtitle {
+  .gianago-subtitle {
     transform: rotate(-1deg);
     text-shadow: 
       -1.5px -1.5px 0 #ffffff,

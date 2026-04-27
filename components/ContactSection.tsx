@@ -1,14 +1,14 @@
 'use client'
 
 export default function ContactSection() {
-  const email = 'panareaterrasini@gmail.com'
+  const email = 'gianagoterrasini@gmail.com'
   const whatsappNumber = '393123456789' // Replace with actual WhatsApp number
-  const whatsappMessage = encodeURIComponent('Ciao! Vorrei informazioni su Panarea Burgers')
+  const whatsappMessage = encodeURIComponent('Ciao! Vorrei informazioni su GianAgo Risto-pub')
   
   const socialLinks = {
     facebook: 'https://www.facebook.com/share/1Ag8aUeDBb/?mibextid=wwXIfr',
-    instagram: 'https://www.instagram.com/panarea_terrasini?igsh=MXZqdDE5M2N4bTFqaA%3D%3D&utm_source=qr',
-    tiktok: 'https://www.tiktok.com/@panarea_terrasini?_r=1&_t=ZN-928Oj9PZ1Mc',
+    instagram: 'https://www.instagram.com/gianago_terrasini?igsh=MXZqdDE5M2N4bTFqaA%3D%3D&utm_source=qr',
+    tiktok: 'https://www.tiktok.com/@gianago_terrasini?_r=1&_t=ZN-928Oj9PZ1Mc',
   }
 
   return (
