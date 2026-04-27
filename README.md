@@ -62,7 +62,7 @@ NEXT_PUBLIC_CONVEX_URL=your_convex_url
 - **Email**: Modifica `components/ContactSection.tsx` e `app/asporto/page.tsx`
 - **WhatsApp**: Modifica il numero in `components/ContactSection.tsx` e `app/asporto/page.tsx`
 - **Banner**: Aggiungi le immagini nella cartella `public/` e modifica `components/PhotoBanner.tsx`
-- **Google Maps**: Il link è già configurato per Civico 51, Terrasini
+- **Google Maps**: Il link è configurato per Via Vittorio Emanuele Orlando 123, Terrasini
 
 ## Database Setup
 

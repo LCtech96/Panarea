@@ -24,7 +24,7 @@ export default function AsportoPage() {
     })
 
     message += `💰 *TOTALE: €${getTotal().toFixed(2)}*\n\n`
-    message += '📍 Civico 51, Terrasini, Palermo'
+    message += '📍 Via Vittorio Emanuele Orlando, n 123, Terrasini, PA (Sicily)'
 
     return encodeURIComponent(message)
   }

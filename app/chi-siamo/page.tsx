@@ -80,7 +80,7 @@ export default function ChiSiamoPage() {
                   </div>
                   <div>
                     <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-                      Il nostro locale si trova nel cuore di Terrasini, in Corso Vittorio Emanuele n 51.
+                      Il nostro locale si trova nel cuore di Terrasini, in Via Vittorio Emanuele Orlando, n 123.
                       Abbiamo creato uno spazio accogliente e moderno dove potete gustare i nostri
                       hamburger e panini in un ambiente confortevole.
                     </p>
