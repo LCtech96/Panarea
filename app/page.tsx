@@ -52,7 +52,7 @@ export default function Home() {
                   GianAgo Risto-pub
                 </h1>
                 <p className="text-lg text-gray-600 dark:text-gray-300 mb-4">
-                  Panineria • Terrasini, Palermo
+                  Risto-Pub • Terrasini, Palermo
                 </p>
               </div>
             </div>
@@ -67,27 +67,26 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             {/* Main Content */}
             <div className="lg:col-span-2 space-y-6">
-              {/* About Section */}
+              {/* Allergie e Intolleranze Section */}
               <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
-                <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Chi Siamo</h2>
+                <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Allergie e intolleranze</h2>
                 <div className="space-y-4 text-gray-700 dark:text-gray-300">
                   <p className="leading-relaxed">
-                    Benvenuti da <strong>GianAgo Risto-pub</strong>, il nuovo punto di riferimento 
-                    per gli amanti dei burger e dei panini a Terrasini, nella provincia di Palermo.
+                    Amati clienti, gli ingredienti utilizzati da noi sono naturali e genuini, due qualita
+                    e bonta date in massima resa ai prodotti tra questi ingredienti sono presenti prodotti
+                    che tuttavia possono provocare intolleranze e allergie, pertanto e importante informare
+                    il personale addetto al fine di scongiurare il rischio di possibili contaminazioni crociate.
                   </p>
-                  
+
                   <p className="leading-relaxed">
-                    La nostra passione nasce dall&apos;amore per la buona cucina e il desiderio di 
-                    portare a Terrasini qualcosa di speciale. Abbiamo deciso di aprire questo 
-                    locale perché crediamo che ogni comunità meriti di avere accesso a cibo di 
-                    qualità, preparato con ingredienti freschi e selezionati.
+                    Dear customers, the ingredients we use are natural and genuine, where quality and
+                    goodness give the products their best performance. These ingredients include products
+                    that can, however, cause intolerances and allergies. Therefore, it is important to
+                    inform our staff in order to avoid the risk of possible cross contamination.
                   </p>
-                  
-                  <p className="leading-relaxed">
-                    Ogni hamburger e ogni panino che prepariamo racconta la nostra storia: 
-                    ingredienti locali quando possibile, carni selezionate, pane fresco e 
-                    condimenti fatti in casa. Non siamo solo un locale, siamo un&apos;esperienza 
-                    culinaria che unisce tradizione e innovazione.
+
+                  <p className="leading-relaxed font-semibold">
+                    Il menu puo variare in base alle disponibilita del giorno
                   </p>
                 </div>
               </div>
