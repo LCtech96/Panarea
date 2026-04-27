@@ -34,6 +34,19 @@ h6 {
   letter-spacing: 0.01em;
 }
 
+/* Pannello admin: titoli leggibili in sans-serif (evita script globale su h1–h6) */
+.admin-surface h1,
+.admin-surface h2,
+.admin-surface h3,
+.admin-surface h4,
+.admin-surface h5,
+.admin-surface h6 {
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, sans-serif;
+  font-weight: 600;
+  letter-spacing: normal;
+}
+
 html {
   overflow-x: hidden;
   margin: 0;

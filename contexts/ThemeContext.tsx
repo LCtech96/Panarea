@@ -5,6 +5,7 @@ import { createContext, useContext, useEffect, useState, ReactNode } from 'react
 interface ThemeContextType {
   theme: 'light' | 'dark'
   toggleTheme: () => void
+  setTheme: (theme: 'light' | 'dark') => void
 }
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined)
@@ -35,9 +36,13 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     setTheme((prev) => (prev === 'light' ? 'dark' : 'light'))
   }
 
+  const setThemeExplicit = (next: 'light' | 'dark') => {
+    setTheme(next)
+  }
+
   // Always provide the context, even during SSR
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+    <ThemeContext.Provider value={{ theme, toggleTheme, setTheme: setThemeExplicit }}>
       {children}
     </ThemeContext.Provider>
   )

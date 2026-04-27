@@ -157,106 +157,97 @@ export default function AdminMenuPanel() {
     }
   }
 
+  const fieldClass =
+    'mt-1 w-full rounded-md border-2 border-zinc-400 bg-white px-3 py-2 text-base text-zinc-900 placeholder:text-zinc-500 shadow-sm focus:border-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-300'
+
   if (loading) {
-    return <p className="text-gray-600">Caricamento menu...</p>
+    return <p className="text-base font-medium text-zinc-900">Caricamento menu...</p>
   }
 
   return (
-    <div className="space-y-8">
-      <p className="text-sm text-gray-600">
+    <div className="space-y-8 text-zinc-900">
+      <p className="text-sm font-medium leading-relaxed text-zinc-800">
         Gestisci piatti salvati nel database. Per la sezione home/menu usa la categoria{' '}
-        <code className="bg-gray-100 px-1 rounded">{MENU_CATEGORY_ANTIPASTI}</code>. Se il database
-        non è configurato, le API restituiranno errore: configura <code>DATABASE_URL</code> su
-        Vercel.
+        <code className="rounded bg-zinc-200 px-1.5 py-0.5 font-mono text-sm font-semibold text-zinc-900">
+          {MENU_CATEGORY_ANTIPASTI}
+        </code>
+        . Se il database non è configurato, le API restituiranno errore: configura{' '}
+        <code className="rounded bg-zinc-200 px-1.5 py-0.5 font-mono text-sm font-semibold text-zinc-900">
+          DATABASE_URL
+        </code>{' '}
+        su Vercel.
       </p>
 
       <form
         onSubmit={editingId != null ? submitUpdate : submitCreate}
-        className="border border-gray-200 rounded-lg p-4 space-y-3 bg-gray-50"
+        className="space-y-4 rounded-lg border-2 border-zinc-300 bg-zinc-50 p-5 shadow-sm"
       >
-        <h3 className="font-semibold text-lg">
+        <h3 className="text-lg font-bold text-zinc-900">
           {editingId != null ? `Modifica piatto #${editingId}` : 'Aggiungi nuovo piatto'}
         </h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-          <label className="block text-sm">
-            <span className="font-medium">Nome</span>
-            <input
-              className="mt-1 w-full border rounded px-2 py-1"
-              value={form.name}
-              onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
-              required
-            />
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+          <label className="block text-sm font-semibold text-zinc-900">
+            Nome
+            <input className={fieldClass} value={form.name} onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))} required />
           </label>
-          <label className="block text-sm">
-            <span className="font-medium">Prezzo (€)</span>
-            <input
-              className="mt-1 w-full border rounded px-2 py-1"
-              value={form.price}
-              onChange={(e) => setForm((f) => ({ ...f, price: e.target.value }))}
-              required
-            />
+          <label className="block text-sm font-semibold text-zinc-900">
+            Prezzo (€)
+            <input className={fieldClass} value={form.price} onChange={(e) => setForm((f) => ({ ...f, price: e.target.value }))} required />
           </label>
-          <label className="block text-sm">
-            <span className="font-medium">Categoria</span>
-            <input
-              className="mt-1 w-full border rounded px-2 py-1"
-              value={form.category}
-              onChange={(e) => setForm((f) => ({ ...f, category: e.target.value }))}
-            />
+          <label className="block text-sm font-semibold text-zinc-900">
+            Categoria
+            <input className={fieldClass} value={form.category} onChange={(e) => setForm((f) => ({ ...f, category: e.target.value }))} />
           </label>
-          <label className="block text-sm">
-            <span className="font-medium">Ordine (position)</span>
+          <label className="block text-sm font-semibold text-zinc-900">
+            Ordine (position)
             <input
               type="number"
-              className="mt-1 w-full border rounded px-2 py-1"
+              className={fieldClass}
               value={form.position}
               onChange={(e) => setForm((f) => ({ ...f, position: e.target.value }))}
             />
           </label>
         </div>
-        <label className="flex items-center gap-2 text-sm">
+        <label className="flex items-center gap-2 text-sm font-semibold text-zinc-900">
           <input
             type="checkbox"
+            className="h-4 w-4 rounded border-2 border-zinc-500 text-orange-600 focus:ring-orange-500"
             checked={form.available}
             onChange={(e) => setForm((f) => ({ ...f, available: e.target.checked }))}
           />
           Disponibile
         </label>
-        <label className="block text-sm">
-          <span className="font-medium">Descrizione (italiano)</span>
-          <textarea
-            className="mt-1 w-full border rounded px-2 py-1 min-h-[72px]"
-            value={form.descIt}
-            onChange={(e) => setForm((f) => ({ ...f, descIt: e.target.value }))}
-          />
+        <label className="block text-sm font-semibold text-zinc-900">
+          Descrizione (italiano)
+          <textarea className={`${fieldClass} min-h-[88px]`} value={form.descIt} onChange={(e) => setForm((f) => ({ ...f, descIt: e.target.value }))} />
         </label>
-        <label className="block text-sm">
-          <span className="font-medium">Descrizione (inglese, opzionale)</span>
-          <textarea
-            className="mt-1 w-full border rounded px-2 py-1 min-h-[56px]"
-            value={form.descEn}
-            onChange={(e) => setForm((f) => ({ ...f, descEn: e.target.value }))}
-          />
+        <label className="block text-sm font-semibold text-zinc-900">
+          Descrizione (inglese, opzionale)
+          <textarea className={`${fieldClass} min-h-[72px]`} value={form.descEn} onChange={(e) => setForm((f) => ({ ...f, descEn: e.target.value }))} />
         </label>
-        <label className="block text-sm">
-          <span className="font-medium">Ingredienti (elenco separato da virgola, opzionale)</span>
+        <label className="block text-sm font-semibold text-zinc-900">
+          Ingredienti (elenco separato da virgola, opzionale)
           <textarea
-            className="mt-1 w-full border rounded px-2 py-1 min-h-[48px]"
+            className={`${fieldClass} min-h-[56px]`}
             value={form.ingredientsCsv}
             onChange={(e) => setForm((f) => ({ ...f, ingredientsCsv: e.target.value }))}
             placeholder="es: mozzarella, pomodoro, basilico"
           />
         </label>
-        <div className="flex gap-2 flex-wrap">
+        <div className="flex flex-wrap gap-2">
           <button
             type="submit"
             disabled={saving}
-            className="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded font-medium disabled:opacity-50"
+            className="rounded-lg bg-orange-600 px-4 py-2.5 font-bold text-white shadow hover:bg-orange-700 disabled:opacity-50"
           >
             {editingId != null ? 'Salva modifiche' : 'Aggiungi piatto'}
           </button>
           {editingId != null && (
-            <button type="button" onClick={cancelEdit} className="px-4 py-2 border rounded">
+            <button
+              type="button"
+              onClick={cancelEdit}
+              className="rounded-lg border-2 border-zinc-500 bg-white px-4 py-2.5 font-semibold text-zinc-900 hover:bg-zinc-100"
+            >
               Annulla
             </button>
           )}
@@ -264,38 +255,38 @@ export default function AdminMenuPanel() {
       </form>
 
       <div>
-        <h3 className="font-semibold text-lg mb-3">Piatti nel database ({items.length})</h3>
-        <div className="overflow-x-auto border rounded-lg">
-          <table className="min-w-full text-sm">
-            <thead className="bg-gray-100">
+        <h3 className="mb-3 text-lg font-bold text-zinc-900">Piatti nel database ({items.length})</h3>
+        <div className="overflow-x-auto rounded-lg border-2 border-zinc-300 bg-white shadow-sm">
+          <table className="min-w-full text-sm text-zinc-900">
+            <thead className="bg-zinc-200">
               <tr>
-                <th className="text-left p-2">ID</th>
-                <th className="text-left p-2">Nome</th>
-                <th className="text-left p-2">€</th>
-                <th className="text-left p-2">Categoria</th>
-                <th className="text-left p-2">Disp.</th>
-                <th className="text-right p-2">Azioni</th>
+                <th className="p-3 text-left font-bold text-zinc-900">ID</th>
+                <th className="p-3 text-left font-bold text-zinc-900">Nome</th>
+                <th className="p-3 text-left font-bold text-zinc-900">€</th>
+                <th className="p-3 text-left font-bold text-zinc-900">Categoria</th>
+                <th className="p-3 text-left font-bold text-zinc-900">Disp.</th>
+                <th className="p-3 text-right font-bold text-zinc-900">Azioni</th>
               </tr>
             </thead>
             <tbody>
               {items.map((row) => (
-                <tr key={row.id} className="border-t">
-                  <td className="p-2">{row.id}</td>
-                  <td className="p-2 font-medium">{row.name}</td>
-                  <td className="p-2">{Number(row.price).toFixed(2)}</td>
-                  <td className="p-2 text-gray-600">{row.category}</td>
-                  <td className="p-2">{row.available ? 'Sì' : 'No'}</td>
-                  <td className="p-2 text-right space-x-2">
+                <tr key={row.id} className="border-t-2 border-zinc-200 odd:bg-white even:bg-zinc-50">
+                  <td className="p-3 font-medium">{row.id}</td>
+                  <td className="p-3 font-semibold">{row.name}</td>
+                  <td className="p-3 font-medium">{Number(row.price).toFixed(2)}</td>
+                  <td className="p-3 text-zinc-800">{row.category}</td>
+                  <td className="p-3 font-medium">{row.available ? 'Sì' : 'No'}</td>
+                  <td className="space-x-3 p-3 text-right">
                     <button
                       type="button"
-                      className="text-orange-600 hover:underline"
+                      className="font-semibold text-orange-700 underline decoration-2 hover:text-orange-900"
                       onClick={() => startEdit(row)}
                     >
                       Modifica
                     </button>
                     <button
                       type="button"
-                      className="text-red-600 hover:underline"
+                      className="font-semibold text-red-700 underline decoration-2 hover:text-red-900"
                       onClick={() => handleDelete(row.id)}
                     >
                       Elimina
@@ -306,7 +297,7 @@ export default function AdminMenuPanel() {
             </tbody>
           </table>
           {items.length === 0 && (
-            <p className="p-4 text-gray-500 text-center">Nessun piatto nel database.</p>
+            <p className="p-6 text-center text-base font-medium text-zinc-800">Nessun piatto nel database.</p>
           )}
         </div>
       </div>

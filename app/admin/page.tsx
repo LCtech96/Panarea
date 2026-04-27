@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import ImageUpload from '@/components/ImageUpload'
 import Image from 'next/image'
 import AdminMenuPanel from '@/components/AdminMenuPanel'
+import { useTheme } from '@/contexts/ThemeContext'
 
 interface ImageData {
   id: number
@@ -15,6 +16,7 @@ interface ImageData {
 }
 
 export default function AdminPage() {
+  const { theme, setTheme } = useTheme()
   const [images, setImages] = useState<ImageData[]>([])
   const [loading, setLoading] = useState(true)
   const [activeTab, setActiveTab] = useState<'images' | 'content' | 'menu'>('images')
@@ -62,46 +64,73 @@ export default function AdminPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <p className="text-lg">Caricamento...</p>
+      <div className="admin-surface min-h-screen flex items-center justify-center bg-zinc-100 text-zinc-900 [color-scheme:light]">
+        <p className="text-lg font-medium text-zinc-900">Caricamento...</p>
       </div>
     )
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
+    <div className="admin-surface min-h-screen bg-zinc-100 py-8 text-zinc-900 [color-scheme:light]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h1 className="text-3xl font-bold text-gray-900 mb-8">Pannello Amministrazione</h1>
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between mb-8">
+          <h1 className="text-3xl font-bold text-zinc-900 tracking-tight">Pannello Amministrazione</h1>
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="text-sm font-semibold text-zinc-800">Aspetto sito:</span>
+            <button
+              type="button"
+              onClick={() => setTheme('light')}
+              className={`rounded-lg px-3 py-2 text-sm font-semibold border-2 transition-colors ${
+                theme === 'light'
+                  ? 'border-orange-500 bg-orange-50 text-zinc-900'
+                  : 'border-zinc-400 bg-white text-zinc-800 hover:border-zinc-500'
+              }`}
+            >
+              Tema chiaro
+            </button>
+            <button
+              type="button"
+              onClick={() => setTheme('dark')}
+              className={`rounded-lg px-3 py-2 text-sm font-semibold border-2 transition-colors ${
+                theme === 'dark'
+                  ? 'border-orange-500 bg-orange-50 text-zinc-900'
+                  : 'border-zinc-400 bg-white text-zinc-800 hover:border-zinc-500'
+              }`}
+            >
+              Tema scuro
+            </button>
+          </div>
+        </div>
 
         {/* Tabs */}
-        <div className="border-b border-gray-200 mb-6">
+        <div className="border-b-2 border-zinc-300 mb-6">
           <nav className="-mb-px flex space-x-8">
             <button
               onClick={() => setActiveTab('images')}
-              className={`py-4 px-1 border-b-2 font-medium text-sm ${
+              className={`py-4 px-1 border-b-2 font-semibold text-sm ${
                 activeTab === 'images'
-                  ? 'border-orange-500 text-orange-600'
-                  : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                  ? 'border-orange-500 text-orange-700'
+                  : 'border-transparent text-zinc-700 hover:text-zinc-900 hover:border-zinc-400'
               }`}
             >
               Immagini
             </button>
             <button
               onClick={() => setActiveTab('content')}
-              className={`py-4 px-1 border-b-2 font-medium text-sm ${
+              className={`py-4 px-1 border-b-2 font-semibold text-sm ${
                 activeTab === 'content'
-                  ? 'border-orange-500 text-orange-600'
-                  : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                  ? 'border-orange-500 text-orange-700'
+                  : 'border-transparent text-zinc-700 hover:text-zinc-900 hover:border-zinc-400'
               }`}
             >
               Contenuti
             </button>
             <button
               onClick={() => setActiveTab('menu')}
-              className={`py-4 px-1 border-b-2 font-medium text-sm ${
+              className={`py-4 px-1 border-b-2 font-semibold text-sm ${
                 activeTab === 'menu'
-                  ? 'border-orange-500 text-orange-600'
-                  : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                  ? 'border-orange-500 text-orange-700'
+                  : 'border-transparent text-zinc-700 hover:text-zinc-900 hover:border-zinc-400'
               }`}
             >
               Menu
@@ -113,8 +142,8 @@ export default function AdminPage() {
         {activeTab === 'images' && (
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             <div className="lg:col-span-1">
-              <div className="bg-white rounded-lg shadow p-6">
-                <h2 className="text-xl font-semibold mb-4">Carica Nuova Immagine</h2>
+              <div className="bg-white rounded-lg border-2 border-zinc-200 shadow-md p-6 text-zinc-900">
+                <h2 className="text-xl font-semibold mb-4 text-zinc-900">Carica Nuova Immagine</h2>
                 <ImageUpload
                   onUploadSuccess={handleUploadSuccess}
                   onUploadError={(error) => alert(`Errore: ${error}`)}
@@ -123,8 +152,8 @@ export default function AdminPage() {
             </div>
 
             <div className="lg:col-span-2">
-              <div className="bg-white rounded-lg shadow p-6">
-                <h2 className="text-xl font-semibold mb-4">Immagini Caricate ({images.length})</h2>
+              <div className="bg-white rounded-lg border-2 border-zinc-200 shadow-md p-6 text-zinc-900">
+                <h2 className="text-xl font-semibold mb-4 text-zinc-900">Immagini Caricate ({images.length})</h2>
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                   {images.map((image) => (
                     <div key={image.id} className="relative group">
@@ -144,7 +173,7 @@ export default function AdminPage() {
                           </button>
                         </div>
                       </div>
-                      <p className="mt-2 text-xs text-gray-600 truncate">
+                      <p className="mt-2 text-xs text-zinc-800 truncate">
                         {image.original_filename}
                       </p>
                       {image.category && (
@@ -155,7 +184,7 @@ export default function AdminPage() {
                     </div>
                   ))}
                   {images.length === 0 && (
-                    <p className="col-span-full text-center text-gray-500 py-8">
+                    <p className="col-span-full text-center text-zinc-700 py-8 font-medium">
                       Nessuna immagine caricata
                     </p>
                   )}
@@ -167,9 +196,9 @@ export default function AdminPage() {
 
         {/* Content Tab */}
         {activeTab === 'content' && (
-          <div className="bg-white rounded-lg shadow p-6">
-            <h2 className="text-xl font-semibold mb-4">Gestione Contenuti</h2>
-            <p className="text-gray-600">
+          <div className="bg-white rounded-lg border-2 border-zinc-200 shadow-md p-6 text-zinc-900">
+            <h2 className="text-xl font-semibold mb-4 text-zinc-900">Gestione Contenuti</h2>
+            <p className="text-zinc-800 leading-relaxed">
               Funzionalità in arrivo. Potrai gestire i contenuti testuali del sito da qui.
             </p>
           </div>
@@ -177,8 +206,8 @@ export default function AdminPage() {
 
         {/* Menu Tab */}
         {activeTab === 'menu' && (
-          <div className="bg-white rounded-lg shadow p-6">
-            <h2 className="text-xl font-semibold mb-4">Gestione Menu</h2>
+          <div className="bg-white rounded-lg border-2 border-zinc-200 shadow-md p-6 text-zinc-900">
+            <h2 className="text-xl font-semibold mb-4 text-zinc-900">Gestione Menu</h2>
             <AdminMenuPanel />
           </div>
         )}
