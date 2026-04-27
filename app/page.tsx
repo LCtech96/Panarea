@@ -4,7 +4,6 @@ import Navbar from '@/components/Navbar'
 import GoogleMaps from '@/components/GoogleMaps'
 import ContactSection from '@/components/ContactSection'
 import ClickableImage from '@/components/ClickableImage'
-import Highlights from '@/components/Highlights'
 
 export default function Home() {
   return (
@@ -59,9 +58,6 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Highlights Section */}
-        <Highlights />
-
         {/* Content Section */}
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -111,7 +107,7 @@ export default function Home() {
                 <div className="space-y-3 text-gray-700 dark:text-gray-300">
                   <p>
                     <strong>Indirizzo:</strong><br />
-                    Corso Vittorio Emanuele n 51, Terrasini, PA (Sicily)
+                    via Vittorio Emanuele Orlando, n 123
                   </p>
                 </div>
               </div>
@@ -127,7 +123,7 @@ export default function Home() {
                 Dove Siamo
               </h2>
               <p className="text-gray-600 dark:text-gray-300">
-                Corso Vittorio Emanuele n 51, Terrasini, PA (Sicily)
+                via Vittorio Emanuele Orlando, n 123
               </p>
             </div>
             <GoogleMaps />
