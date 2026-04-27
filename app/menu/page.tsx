@@ -46,100 +46,7 @@ const availableAddOns = [
   'Extra formaggio',
 ]
 
-const menuItems: MenuItem[] = [
-  {
-    id: '1',
-    name: 'Cotto di Te',
-    description: 'Prosciutto cotto Ferrarini, a scelta tra (Provola, Mozzarella, Gorgonzola, Caciocavallo), Pomodoro',
-    price: 6.50,
-    category: 'panino',
-    ingredients: ['Prosciutto cotto Ferrarini', 'Formaggio a scelta (Provola/Mozzarella/Gorgonzola/Caciocavallo)', 'Pomodoro'],
-    allergens: ['Glutine', 'Latte'],
-  },
-  {
-    id: '2',
-    name: 'Bonito',
-    description: 'Prosciutto crudo San Daniele, rucola, scaglie di grana, olio EVO',
-    price: 7.50,
-    category: 'panino',
-    ingredients: ['Prosciutto crudo San Daniele', 'Rucola', 'Scaglie di grana', 'Olio EVO'],
-    allergens: ['Glutine', 'Latte'],
-    bestSeller: true,
-  },
-  {
-    id: '3',
-    name: 'Sicily',
-    description: 'Salame dolce toscano, a scelta tra (Provola, Primosale, Leerdammer), Philadelphia',
-    price: 6.50,
-    category: 'panino',
-    ingredients: ['Salame dolce toscano', 'Formaggio a scelta (Provola/Primosale/Leerdammer)', 'Philadelphia'],
-    allergens: ['Glutine', 'Latte'],
-  },
-  {
-    id: '4',
-    name: 'Vulcano',
-    description: 'Salame piccante, a scelta tra (Primosale, Caciotta affumicata, Scamorza), patè di pomodoro secco',
-    price: 6.50,
-    category: 'panino',
-    ingredients: ['Salame piccante', 'Formaggio a scelta (Primosale/Caciotta affumicata/Scamorza)', 'Patè di pomodoro secco'],
-    allergens: ['Glutine', 'Latte'],
-  },
-  {
-    id: '5',
-    name: 'Fantasy',
-    description: 'Mortadella, a scelta tra (Stracciatella, Fettuccine al limone)',
-    price: 5.50,
-    category: 'panino',
-    ingredients: ['Mortadella', 'A scelta (Stracciatella/Fettuccine al limone)'],
-    allergens: ['Glutine', 'Latte'],
-  },
-  {
-    id: '6',
-    name: 'Nonna Piera',
-    description: 'Melanzane fritte, lattuga, cipolla, salsa tzatziki',
-    price: 7.50,
-    category: 'panino',
-    ingredients: ['Melanzane fritte', 'Lattuga', 'Cipolla', 'Salsa tzatziki'],
-    allergens: ['Glutine', 'Latte'],
-  },
-  {
-    id: '7',
-    name: 'Tentazione',
-    description: 'Porchetta artigianale, Emmental svizzero, patè di olive nere, lattuga',
-    price: 8.00,
-    category: 'panino',
-    ingredients: ['Porchetta artigianale', 'Emmental svizzero', 'Patè di olive nere', 'Lattuga'],
-    allergens: ['Glutine', 'Latte'],
-    bestSeller: true,
-  },
-  {
-    id: '8',
-    name: 'Topazio',
-    description: 'Speck, stracciatella, pesto di pistacchio',
-    price: 7.50,
-    category: 'panino',
-    ingredients: ['Speck', 'Stracciatella', 'Pesto di pistacchio'],
-    allergens: ['Glutine', 'Latte'],
-  },
-  {
-    id: '9',
-    name: 'Mordicchio Simply',
-    description: 'Due ingredienti a scelta',
-    price: 5.00,
-    category: 'panino',
-    ingredients: ['Due ingredienti a scelta'],
-    allergens: ['Glutine'],
-  },
-  {
-    id: '10',
-    name: 'Sweet',
-    description: 'Panino e Nutella',
-    price: 3.00,
-    category: 'panino',
-    ingredients: ['Pane', 'Nutella'],
-    allergens: ['Glutine', 'Latte'],
-  },
-]
+const menuItems: MenuItem[] = []
 
 export default function MenuPage() {
   const { addToCart } = useOrder()
@@ -232,6 +139,13 @@ export default function MenuPage() {
           </h2>
           
           <div className="space-y-6">
+            {menuItems.length === 0 && (
+              <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-8 text-center">
+                <p className="text-lg text-gray-700 dark:text-gray-300">
+                  Menu in aggiornamento.
+                </p>
+              </div>
+            )}
             {menuItems.map((item) => {
               const selection = selectedItems[item.id] || { quantity: 0, removals: [], additions: [] }
               
