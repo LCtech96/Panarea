@@ -14,24 +14,26 @@ export default function Home() {
         {/* Facebook-style Profile Section */}
         <div className="bg-white dark:bg-gray-800">
           {/* Cover Photo (Banner) */}
-          <div className="relative w-full h-[300px] md:h-[400px] bg-gray-200 dark:bg-gray-700">
+          <div className="relative w-full h-[300px] md:h-[400px] bg-stone-200 dark:bg-stone-800">
             <ClickableImage
-              src="/banner1.png"
-              alt="GianAgo Risto-pub - Banner"
+              src="/gianago-brand.png"
+              alt="GianAgo Food & Drink - Copertina"
               fill
+              fit="contain"
               className="w-full h-full"
               priority
               quality={100}
               sizes="100vw"
             />
-            {/* Profile Picture - Overlay on Banner */}
+            {/* Stesso logo come avatar (stile profilo) */}
             <div className="absolute bottom-0 left-4 md:left-8 transform translate-y-1/2 z-10">
-              <div className="w-32 h-32 md:w-40 md:h-40 rounded-full border-4 border-white dark:border-gray-800 shadow-lg overflow-visible bg-white dark:bg-gray-800">
+              <div className="w-32 h-32 md:w-40 md:h-40 rounded-full border-4 border-white dark:border-gray-800 shadow-lg overflow-visible bg-stone-100 dark:bg-stone-900">
                 <div className="w-full h-full rounded-full overflow-hidden">
                   <ClickableImage
-                    src="/profilo.png"
-                    alt="GianAgo Risto-pub - Profilo"
+                    src="/gianago-brand.png"
+                    alt="GianAgo Food & Drink - Logo"
                     fill
+                    fit="contain"
                     className="rounded-full"
                     priority
                   />

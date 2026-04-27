@@ -9,6 +9,8 @@ interface ClickableImageProps {
   alt: string
   className?: string
   fill?: boolean
+  /** Per loghi: usa contain per non tagliare */
+  fit?: 'cover' | 'contain'
   width?: number
   height?: number
   priority?: boolean
@@ -21,6 +23,7 @@ export default function ClickableImage({
   alt,
   className = '',
   fill = false,
+  fit = 'cover',
   width,
   height,
   priority = false,
@@ -40,7 +43,7 @@ export default function ClickableImage({
             src={src}
             alt={alt}
             fill
-            className="object-cover"
+            className={fit === 'contain' ? 'object-contain' : 'object-cover'}
             priority={priority}
             quality={quality}
             sizes={sizes || "(max-width: 768px) 100vw, 100vw"}
@@ -56,7 +59,7 @@ export default function ClickableImage({
               alt={alt}
               width={width || 800}
               height={height || 600}
-              className="w-full h-auto object-cover"
+              className={`w-full h-auto ${fit === 'contain' ? 'object-contain' : 'object-cover'}`}
               priority={priority}
             />
           </div>
