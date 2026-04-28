@@ -88,16 +88,6 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* Style Image */}
-              <div className="bg-white dark:bg-gray-800 rounded-lg shadow overflow-hidden">
-                <ClickableImage
-                  src="/pani.png"
-                  alt="GianAgo Risto-pub - Stile"
-                  width={800}
-                  height={600}
-                  className="w-full"
-                />
-              </div>
             </div>
 
             {/* Sidebar */}
