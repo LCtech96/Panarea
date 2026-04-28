@@ -25,6 +25,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     'map.open': 'Apri in Google Maps',
     'home.createdBy': 'Creato da',
     'contact.whatsappText': 'Ciao! Vorrei informazioni su GianAgo Risto-pub',
+    'contact.phoneAria': 'Chiama il ristorante',
     'chi.title': 'Chi Siamo',
     'chi.team.title': 'Il Nostro Team',
     'chi.team.p1':
@@ -99,6 +100,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     'map.open': 'Open in Google Maps',
     'home.createdBy': 'Created by',
     'contact.whatsappText': 'Hi! I would like information about GianAgo Risto-pub',
+    'contact.phoneAria': 'Call the restaurant',
     'chi.title': 'About Us',
     'chi.team.title': 'Our Team',
     'chi.team.p1':
@@ -173,6 +175,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     'map.open': 'Abrir en Google Maps',
     'home.createdBy': 'Creado por',
     'contact.whatsappText': 'Hola! Quisiera informacion sobre GianAgo Risto-pub',
+    'contact.phoneAria': 'Llamar al restaurante',
     'chi.title': 'Quienes Somos',
     'chi.team.title': 'Nuestro Equipo',
     'chi.team.p1':
@@ -247,6 +250,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     'map.open': 'Ouvrir dans Google Maps',
     'home.createdBy': 'Cree par',
     'contact.whatsappText': 'Bonjour ! Je voudrais des informations sur GianAgo Risto-pub',
+    'contact.phoneAria': 'Appeler le restaurant',
     'chi.title': 'Qui sommes-nous',
     'chi.team.title': 'Notre equipe',
     'chi.team.p1':
@@ -321,6 +325,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     'map.open': 'In Google Maps offnen',
     'home.createdBy': 'Erstellt von',
     'contact.whatsappText': 'Hallo! Ich mochte Informationen uber GianAgo Risto-pub',
+    'contact.phoneAria': 'Restaurant anrufen',
     'chi.title': 'Uber uns',
     'chi.team.title': 'Unser Team',
     'chi.team.p1':
