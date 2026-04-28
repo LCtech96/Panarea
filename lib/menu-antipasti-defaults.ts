@@ -1,9 +1,7 @@
-import { encodeMenuDescription } from '@/lib/menuDescriptionCodec'
+﻿import { encodeMenuDescription } from '@/lib/menuDescriptionCodec'
 
-/** Categoria usata in DB e in admin per la sezione antipasti/menu. */
 export const MENU_CATEGORY_ANTIPASTI = 'antipasti-pinse-tagliere'
 
-/** Piatti mostrati se il DB non ha ancora voci per questa categoria. */
 export function getDefaultAntipastiItemsForSeed() {
   return [
     { name: 'Patatine fritte piccolo', price: 2, description: '', position: 10 },
@@ -58,21 +56,13 @@ export function getDefaultAntipastiItemsForSeed() {
     {
       name: 'TAGLIATELLE DELLO CHEF',
       price: 13,
-      description: encodeMenuDescription(
-        'pomodoro, basilico, mozzarella, pesto',
-        'tomato, basil, mozzarella, pesto',
-        ''
-      ),
+      description: encodeMenuDescription('pomodoro, basilico, mozzarella, pesto', 'tomato, basil, mozzarella, pesto', ''),
       position: 140,
     },
     {
       name: 'CARBONARA',
       price: 12,
-      description: encodeMenuDescription(
-        'guanciale, pecorino, uovo, pepe',
-        'bacon, pecorino cheese, egg, pepper',
-        ''
-      ),
+      description: encodeMenuDescription('guanciale, pecorino, uovo, pepe', 'bacon, pecorino cheese, egg, pepper', ''),
       position: 150,
     },
     {
@@ -118,11 +108,7 @@ export function getDefaultAntipastiItemsForSeed() {
     {
       name: 'SPAGHETTI ALLE VONGOLE',
       price: 16,
-      description: encodeMenuDescription(
-        'vongole, aglio, olio, sale, pepe, prezzemolo',
-        'clams, garlic, oil, salt, pepper, parsley',
-        ''
-      ),
+      description: encodeMenuDescription('vongole, aglio, olio, sale, pepe, prezzemolo', 'clams, garlic, oil, salt, pepper, parsley', ''),
       position: 200,
     },
     {
@@ -144,6 +130,81 @@ export function getDefaultAntipastiItemsForSeed() {
         ''
       ),
       position: 220,
+    },
+    {
+      name: 'TAGLIATA DI MANZO',
+      price: 15,
+      description: encodeMenuDescription('manzo, rucola, pomodorini, grana, olio, sale, pepe', 'beef, arugula, cherry tomatoes, parmesan, oil, salt, pepper', ''),
+      position: 230,
+    },
+    {
+      name: 'MEDAGLIONE DI MANZO AL PEPE ROSA',
+      price: 15,
+      description: encodeMenuDescription(
+        'manzo, panna, pepe rosa, burro, olio, sale, pepe, farina, brandy, prezzemolo',
+        'beef, cream, pink pepper, butter, oil, salt, pepper, flour, brandy, parsley',
+        ''
+      ),
+      position: 240,
+    },
+    {
+      name: 'GRIGLIATA DI PESCE (GRILLED FISH)',
+      price: 16,
+      description: encodeMenuDescription('pesce spada, tonno, gambero', 'swordfish, tuna, shrimp', ''),
+      position: 250,
+    },
+    {
+      name: 'ORATA AGLI AGRUMI DI SICILIA',
+      price: 12,
+      description: encodeMenuDescription(
+        'limone, arancia, aglio, olio, sale, pepe, prezzemolo',
+        'lemon, orange, garlic, oil, salt, pepper, parsley',
+        ''
+      ),
+      position: 260,
+    },
+    { name: 'FRITTURA DI PARANZA', price: 16, description: '', position: 270 },
+    {
+      name: 'CONTORNI',
+      price: 7,
+      description: encodeMenuDescription(
+        'Insalata verde, Insalata capricciosa, Patate al forno, Verdure grigliate, Radicchio grigliato',
+        'Green salad, Capricciosa salad, Baked potatoes, Grilled vegetables, Grilled radicchio',
+        ''
+      ),
+      position: 280,
+    },
+    { name: 'Cannolo Siciliano', price: 5, description: '', position: 290 },
+    { name: 'Cheesecake', price: 5, description: '', position: 300 },
+    {
+      name: 'CARLO',
+      price: 25,
+      description: encodeMenuDescription(
+        'salmone, insalata di mare, cocktail di gamberi, zuppa di cozze, 1 gambero marinato, 2 ostriche',
+        'salmon, seafood salad, shrimp cocktail, mussel soup, 1 marinated shrimp, 2 oysters',
+        ''
+      ),
+      position: 310,
+    },
+    {
+      name: 'MILI',
+      price: 22,
+      description: encodeMenuDescription(
+        'paranza, anelli di totano, capuccetti, caponata di pesce spada, cocktail di gamberi, zuppa di cozze',
+        'small fried fish, baby squid rings, swordfish caponata, shrimp cocktail, mussel soup',
+        ''
+      ),
+      position: 320,
+    },
+    {
+      name: 'APERIMEAT CON COCKTAIL A SCELTA',
+      price: 22,
+      description: encodeMenuDescription(
+        'salsiccia, costata, involtino di carne, hamburger, puntina di maiale, contorno di insalata verde o patate al forno o verdure grigliate',
+        'sausage, rib steak, meat roll, hamburger, pork rib, side of green salad or baked potatoes or grilled vegetables',
+        ''
+      ),
+      position: 330,
     },
   ]
 }

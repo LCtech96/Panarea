@@ -27,6 +27,7 @@ interface DisplayMenuItem {
   name: string
   price: number
   description: string
+  position: number
 }
 
 function mapDefaultsToDisplay(): DisplayMenuItem[] {
@@ -35,6 +36,7 @@ function mapDefaultsToDisplay(): DisplayMenuItem[] {
     name: row.name,
     price: row.price,
     description: row.description,
+    position: row.position,
   }))
 }
 
@@ -44,7 +46,21 @@ function mapApiToDisplay(row: ApiMenuRow): DisplayMenuItem {
     name: row.name,
     price: Number(row.price),
     description: row.description || '',
+    position: (row as any).position ?? 0,
   }
+}
+
+function getSectionTitle(position: number): string {
+  if (position >= 330) return 'Aperimeat con Cocktail a scelta'
+  if (position >= 310) return 'Aperifish con Cocktail a scelta'
+  if (position >= 290) return 'Dessert'
+  if (position >= 280) return 'Contorni'
+  if (position >= 250) return 'Secondi di Pesce'
+  if (position >= 230) return 'Secondi piatti Carne'
+  if (position >= 180) return 'Primi Piatti Pesce'
+  if (position >= 140) return 'Primi Piatti'
+  if (position >= 90) return 'Antipasti di Mare'
+  return 'Antipasti Pinse e Tagliere'
 }
 
 export default function MenuPage() {
@@ -148,17 +164,20 @@ export default function MenuPage() {
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white text-center mb-4">
             {t('menu.title')}
           </h1>
-          <h2 className="text-2xl md:text-3xl font-bold text-red-900 dark:text-red-300 text-center mb-10">
-            {t('menu.section')}
-          </h2>
-
           {loading ? (
             <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-8 text-center">
               <p className="text-gray-600 dark:text-gray-300">{t('menu.loading')}</p>
             </div>
           ) : (
             <div className="space-y-6">
-              {menuItems.map((item) => {
+              {menuItems
+                .slice()
+                .sort((a, b) => a.position - b.position)
+                .map((item, index, sortedItems) => {
+                const sectionTitle = getSectionTitle(item.position)
+                const prevSectionTitle =
+                  index > 0 ? getSectionTitle(sortedItems[index - 1].position) : null
+                const showSectionTitle = index === 0 || sectionTitle !== prevSectionTitle
                 const selection = selectedItems[item.id] || {
                   quantity: 0,
                   removals: [],
@@ -172,84 +191,88 @@ export default function MenuPage() {
                 const showIngredientMods = removableIngredients.length > 0
 
                 return (
-                  <div
-                    key={item.id}
-                    className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6"
-                  >
-                    <div className="flex items-baseline gap-2 w-full mb-3">
-                      <span className="text-xl font-bold text-gray-900 dark:text-white shrink-0">
-                        {item.name}
-                      </span>
-                      <span className="flex-1 border-b border-dotted border-gray-400 dark:border-gray-500 min-w-[1rem] mb-1.5" />
-                      <span className="text-xl font-bold text-orange-600 dark:text-orange-400 shrink-0">
-                        €{item.price.toFixed(2)}
-                      </span>
-                    </div>
-
-                    {it ? (
-                      <p className="text-gray-700 dark:text-gray-300 leading-relaxed">{it}</p>
-                    ) : null}
-                    {en ? (
-                      <p className="text-gray-600 dark:text-gray-400 italic mt-2 leading-relaxed">
-                        {en}
-                      </p>
-                    ) : null}
-
-                    {showIngredientMods && (
-                      <div className="mt-4">
-                        <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
-                          {t('menu.removeOptional')}
-                        </label>
-                        <div className="flex flex-wrap gap-2">
-                          {removableIngredients.map((ingredient) => (
-                            <button
-                              key={ingredient}
-                              type="button"
-                              onClick={() => toggleRemoval(item.id, ingredient)}
-                              className={`px-3 py-1 rounded-full text-sm transition-colors ${
-                                selection.removals.includes(ingredient)
-                                  ? 'bg-red-500 text-white'
-                                  : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300'
-                              }`}
-                            >
-                              - {ingredient}
-                            </button>
-                          ))}
-                        </div>
-                      </div>
+                  <div key={item.id} className="space-y-3">
+                    {showSectionTitle && (
+                      <h2 className="text-2xl md:text-3xl font-bold text-red-900 dark:text-red-300 text-center mt-8">
+                        {sectionTitle}
+                      </h2>
                     )}
-
-                    <div className="flex items-center gap-4 mt-6">
-                      <div className="flex items-center gap-2">
-                        <button
-                          type="button"
-                          onClick={() =>
-                            handleQuantityChange(item.id, selection.quantity - 1)
-                          }
-                          className="w-8 h-8 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 font-bold hover:bg-gray-300 dark:hover:bg-gray-600"
-                        >
-                          -
-                        </button>
-                        <span className="w-12 text-center font-semibold text-gray-900 dark:text-white">
-                          {selection.quantity}
+                    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
+                      <div className="flex items-baseline gap-2 w-full mb-3">
+                        <span className="text-xl font-bold text-gray-900 dark:text-white shrink-0">
+                          {item.name}
                         </span>
+                        <span className="flex-1 border-b border-dotted border-gray-400 dark:border-gray-500 min-w-[1rem] mb-1.5" />
+                        <span className="text-xl font-bold text-orange-600 dark:text-orange-400 shrink-0">
+                          €{item.price.toFixed(2)}
+                        </span>
+                      </div>
+
+                      {it ? (
+                        <p className="text-gray-700 dark:text-gray-300 leading-relaxed">{it}</p>
+                      ) : null}
+                      {en ? (
+                        <p className="text-gray-600 dark:text-gray-400 italic mt-2 leading-relaxed">
+                          {en}
+                        </p>
+                      ) : null}
+
+                      {showIngredientMods && (
+                        <div className="mt-4">
+                          <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
+                            {t('menu.removeOptional')}
+                          </label>
+                          <div className="flex flex-wrap gap-2">
+                            {removableIngredients.map((ingredient) => (
+                              <button
+                                key={ingredient}
+                                type="button"
+                                onClick={() => toggleRemoval(item.id, ingredient)}
+                                className={`px-3 py-1 rounded-full text-sm transition-colors ${
+                                  selection.removals.includes(ingredient)
+                                    ? 'bg-red-500 text-white'
+                                    : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300'
+                                }`}
+                              >
+                                - {ingredient}
+                              </button>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+
+                      <div className="flex items-center gap-4 mt-6">
+                        <div className="flex items-center gap-2">
+                          <button
+                            type="button"
+                            onClick={() =>
+                              handleQuantityChange(item.id, selection.quantity - 1)
+                            }
+                            className="w-8 h-8 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 font-bold hover:bg-gray-300 dark:hover:bg-gray-600"
+                          >
+                            -
+                          </button>
+                          <span className="w-12 text-center font-semibold text-gray-900 dark:text-white">
+                            {selection.quantity}
+                          </span>
+                          <button
+                            type="button"
+                            onClick={() =>
+                              handleQuantityChange(item.id, selection.quantity + 1)
+                            }
+                            className="w-8 h-8 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 font-bold hover:bg-gray-300 dark:hover:bg-gray-600"
+                          >
+                            +
+                          </button>
+                        </div>
                         <button
                           type="button"
-                          onClick={() =>
-                            handleQuantityChange(item.id, selection.quantity + 1)
-                          }
-                          className="w-8 h-8 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 font-bold hover:bg-gray-300 dark:hover:bg-gray-600"
+                          onClick={() => handleAddToCart(item)}
+                          className="flex-1 bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 rounded-lg font-semibold transition-colors"
                         >
-                          +
+                          {t('menu.addToCart')}
                         </button>
                       </div>
-                      <button
-                        type="button"
-                        onClick={() => handleAddToCart(item)}
-                        className="flex-1 bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 rounded-lg font-semibold transition-colors"
-                      >
-                        {t('menu.addToCart')}
-                      </button>
                     </div>
                   </div>
                 )
