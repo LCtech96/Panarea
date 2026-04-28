@@ -14,31 +14,40 @@ export interface MenuItem {
   updated_at: Date
 }
 
-// Ottieni tutti i prodotti del menu
+/** Riga API con path immagine risolta (LEFT JOIN images). */
+export type MenuItemWithImage = MenuItem & { image_file_path: string | null }
+
+const MENU_FROM = `FROM menu_items m LEFT JOIN images i ON m.image_id = i.id`
+
+// Ottieni tutti i prodotti del menu (con path immagine per anteprima)
 export async function getAllMenuItems(category?: string, availableOnly: boolean = true) {
+  const sel = `SELECT m.*, i.file_path AS image_file_path ${MENU_FROM}`
   if (category && availableOnly) {
-    return query<MenuItem>(
-      'SELECT * FROM menu_items WHERE category = $1 AND available = true ORDER BY position, name',
+    return query<MenuItemWithImage>(
+      `${sel} WHERE m.category = $1 AND m.available = true ORDER BY m.position, m.name`,
       [category]
     )
   }
   if (category) {
-    return query<MenuItem>(
-      'SELECT * FROM menu_items WHERE category = $1 ORDER BY position, name',
+    return query<MenuItemWithImage>(
+      `${sel} WHERE m.category = $1 ORDER BY m.position, m.name`,
       [category]
     )
   }
   if (availableOnly) {
-    return query<MenuItem>(
-      'SELECT * FROM menu_items WHERE available = true ORDER BY category, position, name'
+    return query<MenuItemWithImage>(
+      `${sel} WHERE m.available = true ORDER BY m.category, m.position, m.name`
     )
   }
-  return query<MenuItem>('SELECT * FROM menu_items ORDER BY category, position, name')
+  return query<MenuItemWithImage>(`${sel} ORDER BY m.category, m.position, m.name`)
 }
 
 // Ottieni un prodotto per ID
 export async function getMenuItemById(id: number) {
-  const result = await query<MenuItem>('SELECT * FROM menu_items WHERE id = $1', [id])
+  const result = await query<MenuItemWithImage>(
+    `SELECT m.*, i.file_path AS image_file_path ${MENU_FROM} WHERE m.id = $1`,
+    [id]
+  )
   return result[0] || null
 }
 
@@ -134,6 +143,7 @@ export async function deleteMenuItem(id: number) {
   const result = await query<MenuItem>('DELETE FROM menu_items WHERE id = $1 RETURNING *', [id])
   return result[0] || null
 }
+
 
 
 

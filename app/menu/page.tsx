@@ -1,6 +1,7 @@
 'use client'
 
 import { useCallback, useEffect, useState } from 'react'
+import Image from 'next/image'
 import Navbar from '@/components/Navbar'
 import ContactSection from '@/components/ContactSection'
 import BackButton from '@/components/BackButton'
@@ -20,6 +21,7 @@ interface ApiMenuRow {
   price: number
   category: string
   available: boolean
+  image_file_path?: string | null
 }
 
 interface DisplayMenuItem {
@@ -28,6 +30,7 @@ interface DisplayMenuItem {
   price: number
   description: string
   position: number
+  imageUrl?: string | null
 }
 
 function mapDefaultsToDisplay(): DisplayMenuItem[] {
@@ -37,6 +40,7 @@ function mapDefaultsToDisplay(): DisplayMenuItem[] {
     price: row.price,
     description: row.description,
     position: row.position,
+    imageUrl: null,
   }))
 }
 
@@ -46,7 +50,8 @@ function mapApiToDisplay(row: ApiMenuRow): DisplayMenuItem {
     name: row.name,
     price: Number(row.price),
     description: row.description || '',
-    position: (row as any).position ?? 0,
+    position: (row as ApiMenuRow & { position?: number }).position ?? 0,
+    imageUrl: row.image_file_path ?? null,
   }
 }
 
@@ -198,6 +203,19 @@ export default function MenuPage() {
                       </h2>
                     )}
                     <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
+                      <div className={`mb-3 flex gap-4 ${item.imageUrl ? 'sm:flex-row flex-col sm:items-start' : ''}`}>
+                        {item.imageUrl ? (
+                          <div className="relative mx-auto h-36 w-full max-w-sm shrink-0 overflow-hidden rounded-xl bg-gray-100 dark:bg-gray-700 sm:mx-0 sm:h-28 sm:w-28">
+                            <Image
+                              src={item.imageUrl}
+                              alt={item.name}
+                              fill
+                              className="object-cover"
+                              sizes="(max-width: 640px) 100vw, 112px"
+                            />
+                          </div>
+                        ) : null}
+                        <div className="min-w-0 flex-1">
                       <div className="flex items-baseline gap-2 w-full mb-3">
                         <span className="text-xl font-bold text-gray-900 dark:text-white shrink-0">
                           {item.name}
@@ -272,6 +290,8 @@ export default function MenuPage() {
                         >
                           {t('menu.addToCart')}
                         </button>
+                      </div>
+                        </div>
                       </div>
                     </div>
                   </div>

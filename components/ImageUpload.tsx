@@ -49,6 +49,7 @@ export default function ImageUpload({ category, onUploadSuccess, onUploadError }
       const response = await fetch('/api/images', {
         method: 'POST',
         body: uploadFormData,
+        credentials: 'include',
       })
 
       const result = await response.json()
@@ -71,7 +72,7 @@ export default function ImageUpload({ category, onUploadSuccess, onUploadError }
   return (
     <form onSubmit={handleUpload} className="space-y-4">
       <div>
-        <label htmlFor="file" className="block text-sm font-medium text-gray-700 mb-2">
+        <label htmlFor="file" className="mb-2 block text-sm font-medium text-gray-700 dark:text-zinc-300">
           Seleziona Immagine
         </label>
         <input
@@ -81,7 +82,7 @@ export default function ImageUpload({ category, onUploadSuccess, onUploadError }
           accept="image/*"
           onChange={handleFileChange}
           required
-          className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-orange-500 file:text-white hover:file:bg-orange-600"
+          className="block w-full text-sm text-gray-500 file:mr-4 file:rounded-full file:border-0 file:bg-orange-500 file:px-4 file:py-2 file:text-sm file:font-semibold file:text-white hover:file:bg-orange-600 dark:text-zinc-400"
         />
       </div>
 
@@ -97,14 +98,14 @@ export default function ImageUpload({ category, onUploadSuccess, onUploadError }
       )}
 
       <div>
-        <label htmlFor="alt_text" className="block text-sm font-medium text-gray-700 mb-2">
+        <label htmlFor="alt_text" className="mb-2 block text-sm font-medium text-gray-700 dark:text-zinc-300">
           Testo Alternativo (opzionale)
         </label>
         <input
           type="text"
           id="alt_text"
           name="alt_text"
-          className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-orange-500 focus:border-orange-500"
+          className="w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-orange-500 focus:outline-none focus:ring-orange-500 dark:border-zinc-600 dark:bg-zinc-800 dark:text-zinc-100"
         />
       </div>
 
