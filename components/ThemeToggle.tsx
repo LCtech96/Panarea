@@ -2,36 +2,33 @@
 
 import { useTheme } from '@/contexts/ThemeContext'
 
-export default function ThemeToggle() {
+type Variant = 'default' | 'topBar' | 'navDesktop'
+
+const btnClass: Record<Variant, string> = {
+  default:
+    'rounded-full border border-zinc-300 bg-white p-2.5 text-zinc-900 shadow-sm transition hover:bg-zinc-50 active:scale-95 dark:border-zinc-600 dark:bg-zinc-800 dark:text-white dark:hover:bg-zinc-700',
+  topBar:
+    'rounded-full border-2 border-zinc-300 bg-white p-2 text-zinc-900 shadow-sm transition hover:bg-zinc-50 active:scale-95 dark:border-zinc-500 dark:bg-zinc-900 dark:text-white',
+  navDesktop:
+    'rounded-full border-2 border-zinc-300 bg-white p-2.5 text-zinc-900 shadow-sm transition hover:bg-zinc-100 active:scale-95 dark:border-zinc-600 dark:bg-zinc-900 dark:text-white dark:hover:bg-zinc-800',
+}
+
+export default function ThemeToggle({ variant = 'default' }: { variant?: Variant }) {
   const { theme, toggleTheme } = useTheme()
 
   return (
     <button
+      type="button"
       onClick={toggleTheme}
-      className="rounded-full border border-zinc-200/90 bg-white/90 p-2.5 text-zinc-800 shadow-ios transition hover:bg-zinc-50 active:scale-95 dark:border-zinc-600 dark:bg-zinc-800/90 dark:text-white dark:hover:bg-zinc-700"
+      className={btnClass[variant]}
       aria-label="Toggle theme"
     >
       {theme === 'light' ? (
-        <svg
-          className="w-6 h-6"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
-          />
+        <svg className="h-5 w-5 md:h-6 md:w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
         </svg>
       ) : (
-        <svg
-          className="w-6 h-6"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
+        <svg className="h-5 w-5 md:h-6 md:w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -43,4 +40,3 @@ export default function ThemeToggle() {
     </button>
   )
 }
-

@@ -14,7 +14,7 @@ export default function ContactSection() {
   }
 
   return (
-    <footer className="border-t border-white/10 bg-gradient-to-b from-zinc-900 via-zinc-950 to-black pb-[calc(6.5rem+env(safe-area-inset-bottom,0px))] pt-14 text-white md:pb-14">
+    <footer className="border-t border-white/10 bg-gradient-to-b from-zinc-900 via-zinc-950 to-black pb-[calc(5rem+env(safe-area-inset-bottom,0px))] pt-14 text-white md:pb-14">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-10 flex flex-col items-stretch justify-center gap-4 md:flex-row md:flex-wrap md:items-center md:gap-6">
           <a

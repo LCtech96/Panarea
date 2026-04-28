@@ -158,10 +158,10 @@ export default function MenuPage() {
   }
 
   return (
-    <main className="site-shell pb-[calc(7rem+env(safe-area-inset-bottom,0px))] md:pb-10">
+    <main className="site-shell pb-[calc(4.75rem+env(safe-area-inset-bottom,0px))] md:pb-10">
       <Navbar />
 
-      <div className="pb-6 pt-16 md:pb-10 md:pt-28">
+      <div className="pb-6 pt-14 md:pb-10 md:pt-28">
         <section className="mx-auto max-w-4xl px-4 py-10 sm:px-6 md:py-14 lg:px-8">
           <div className="mb-8">
             <BackButton />

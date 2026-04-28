@@ -9,41 +9,40 @@ import { useLanguage } from '@/contexts/LanguageContext'
 export default function Home() {
   const { t } = useLanguage()
   return (
-    <main className="site-shell pb-[calc(7rem+env(safe-area-inset-bottom,0px))] md:pb-10">
+    <main className="site-shell pb-[calc(4.75rem+env(safe-area-inset-bottom,0px))] md:pb-10">
       <Navbar />
 
-      <div className="pt-0 md:pt-28">
-        <div className="overflow-hidden bg-white/60 dark:bg-zinc-900/40">
-          <div className="relative mx-auto max-w-6xl px-4 pb-2 pt-4 md:px-8 md:pt-8">
-            <div className="relative aspect-[21/9] min-h-[220px] overflow-hidden rounded-[1.75rem] shadow-ios-lg ring-1 ring-black/5 dark:ring-white/10 md:min-h-[320px] md:rounded-[2rem]">
-              <ClickableImage
-                src="/gianago-brand.png"
-                alt="GianAgo Food & Drink - Copertina"
-                fill
-                fit="contain"
-                className="bg-gradient-to-br from-zinc-100 to-zinc-200 dark:from-zinc-800 dark:to-zinc-900"
-                priority
-                quality={100}
-                sizes="100vw"
-              />
-              <div className="absolute bottom-0 left-5 z-10 translate-y-1/2 md:left-10">
-                <div className="h-28 w-28 overflow-hidden rounded-[2rem] bg-white shadow-ios-lg ring-[6px] ring-white dark:bg-zinc-900 dark:ring-zinc-900 md:h-36 md:w-36 md:rounded-[2.25rem] md:ring-8">
-                  <ClickableImage
-                    src="/gianago-brand.png"
-                    alt="GianAgo Food & Drink - Logo"
-                    fill
-                    fit="contain"
-                    className="rounded-[2rem]"
-                    priority
-                  />
-                </div>
+      <div className="pt-12 md:pt-28">
+        {/* Hero: copertina piena, avatar sotto (mai tagliato da overflow) */}
+        <div className="bg-white/70 dark:bg-zinc-900/50">
+          <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+            <div className="overflow-hidden rounded-2xl bg-gradient-to-b from-zinc-100 to-zinc-200 shadow-ios-lg ring-1 ring-black/5 dark:from-zinc-800 dark:to-zinc-900 dark:ring-white/10 md:rounded-[2rem]">
+              <div className="relative aspect-[16/10] min-h-[200px] w-full md:aspect-[2.2/1] md:min-h-[260px]">
+                <ClickableImage
+                  src="/gianago-brand.png"
+                  alt="GianAgo Food & Drink - Copertina"
+                  fill
+                  fit="contain"
+                  className="bg-transparent object-contain p-5 md:p-10"
+                  priority
+                  quality={100}
+                  sizes="(max-width: 768px) 100vw, 1152px"
+                />
               </div>
             </div>
-          </div>
 
-          <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-            <div className="relative pt-16 md:pt-20">
-              <div className="pb-8 md:pb-10">
+            <div className="mt-6 flex flex-col items-center gap-5 pb-2 md:mt-10 md:flex-row md:items-center md:gap-8 md:pb-4">
+              <div className="relative h-[7.5rem] w-[7.5rem] shrink-0 overflow-hidden rounded-[1.75rem] bg-white shadow-ios-lg ring-4 ring-white dark:bg-zinc-900 dark:ring-zinc-950 md:h-36 md:w-36 md:rounded-[2rem] md:ring-[6px]">
+                <ClickableImage
+                  src="/gianago-brand.png"
+                  alt="GianAgo Food & Drink - Logo"
+                  fill
+                  fit="contain"
+                  className="object-contain p-3 md:p-4"
+                  priority
+                />
+              </div>
+              <div className="text-center md:text-left">
                 <h1 className="mb-2 text-3xl font-bold tracking-tight text-zinc-900 dark:text-white md:text-4xl">
                   GianAgo Risto-pub
                 </h1>
