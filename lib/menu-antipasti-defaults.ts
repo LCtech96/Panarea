@@ -50,5 +50,10 @@ export function getDefaultAntipastiItemsForSeed() {
       ),
       position: 80,
     },
+    { name: 'Cocktail di Gamberi', price: 10, description: '', position: 90 },
+    { name: 'Insalata di mare', price: 10, description: '', position: 100 },
+    { name: 'Zuppa di cozze', price: 10, description: '', position: 110 },
+    { name: 'Polpo scottato', price: 12, description: '', position: 120 },
+    { name: 'Caponata di Pesce Spada', price: 10, description: '', position: 130 },
   ]
 }
