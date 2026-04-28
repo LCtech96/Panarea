@@ -6,6 +6,10 @@ export function getPublicSiteUrl(): string {
 
 export const BUSINESS_NAME = 'GianAgo Risto-pub'
 
+/** Descrizione breve per meta tag e schema.org (ricerche tipo “gianago ristopub terrasini”) */
+export const BUSINESS_SEO_DESCRIPTION =
+  'GianAgo ristopub a Terrasini, Palermo: pesce fresco, cucina siciliana, drink e asporto. Vicino aeroporto e mare. Menu online e ordini.'
+
 /** E.164 senza spazi */
 export const BUSINESS_TELEPHONE_E164 = '+393773899808'
 
@@ -43,6 +47,8 @@ export function getRestaurantJsonLd(): Record<string, unknown> {
     '@type': 'Restaurant',
     '@id': `${url}/#restaurant`,
     name: BUSINESS_NAME,
+    alternateName: ['Gianago Ristopub', 'GianAgo', 'Gianago Terrasini'],
+    description: BUSINESS_SEO_DESCRIPTION,
     url,
     image: [`${url}/gianago-brand.png`],
     telephone: BUSINESS_TELEPHONE_E164,

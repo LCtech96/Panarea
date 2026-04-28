@@ -3,6 +3,7 @@ import { Permanent_Marker, Kalam, Great_Vibes } from 'next/font/google'
 import './globals.css'
 import { Providers } from '@/components/Providers'
 import RestaurantJsonLd from '@/components/RestaurantJsonLd'
+import { BUSINESS_NAME, BUSINESS_SEO_DESCRIPTION, getPublicSiteUrl } from '@/lib/business'
 
 const permanentMarker = Permanent_Marker({
   weight: '400',
@@ -25,15 +26,53 @@ const greatVibes = Great_Vibes({
   display: 'swap',
 })
 
+const siteUrl = getPublicSiteUrl()
+
 export const metadata: Metadata = {
-  title: 'GianAgo Risto-pub - Terrasini',
-  description:
-    'Risto-pub a Terrasini (Palermo): pesce fresco, cucina siciliana, drink e asporto. Vicino aeroporto e mare.',
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.gianago.com'),
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: `${BUSINESS_NAME} Terrasini | Risto-pub Palermo — Menu & Asporto`,
+    template: `%s | ${BUSINESS_NAME} Terrasini`,
+  },
+  description: BUSINESS_SEO_DESCRIPTION,
+  keywords: [
+    'GianAgo',
+    'Gianago ristopub',
+    'ristopub Terrasini',
+    'ristopub Palermo',
+    'ristorante Terrasini',
+    'pub Terrasini',
+    'asporto Terrasini',
+    'pesce Terrasini',
+  ],
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true },
+  },
+  alternates: {
+    canonical: siteUrl,
+  },
   openGraph: {
     type: 'website',
     locale: 'it_IT',
-    siteName: 'GianAgo Risto-pub',
+    url: siteUrl,
+    siteName: BUSINESS_NAME,
+    title: `${BUSINESS_NAME} — Terrasini (Palermo)`,
+    description: BUSINESS_SEO_DESCRIPTION,
+    images: [
+      {
+        url: '/gianago-brand.png',
+        width: 1200,
+        height: 630,
+        alt: `${BUSINESS_NAME} — Terrasini`,
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: `${BUSINESS_NAME} Terrasini`,
+    description: BUSINESS_SEO_DESCRIPTION,
   },
 }
 
