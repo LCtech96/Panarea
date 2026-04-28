@@ -28,11 +28,11 @@ export const translations: Record<Locale, Record<string, string>> = {
     'chi.title': 'Chi Siamo',
     'chi.team.title': 'Il Nostro Team',
     'chi.team.p1':
-      'Siamo un team appassionato di cibo e di qualita. Ogni membro del nostro staff condivide la stessa visione: portare a Terrasini hamburger e panini preparati con ingredienti freschi e selezionati, seguendo ricette che uniscono tradizione e innovazione.',
+      'Siamo un ristopub a conduzione familiare, nato dall amore per la cucina autentica e per l ospitalita. Ogni giorno lavoriamo insieme per offrire piatti preparati al momento, con attenzione ai dettagli e gusto vero.',
     'chi.team.p2':
-      'La nostra passione per la cucina si riflette in ogni piatto che prepariamo. Crediamo che il cibo non sia solo nutrimento, ma un esperienza che unisce le persone e crea momenti indimenticabili.',
+      'Uno dei nostri familiari e pescatore locale: per questo il pesce che portiamo in tavola e sempre freschissimo, scelto con cura e valorizzato con ricette semplici che rispettano il sapore del mare.',
     'chi.team.p3':
-      'Venite a trovarci e scoprite la differenza che fa la passione e l attenzione ai dettagli in ogni nostro hamburger e panino.',
+      'Nel nostro locale troverai un ambiente caldo e familiare, dove tradizione e qualita si incontrano per farti sentire a casa, dal primo assaggio all ultimo.',
     'chi.place.title': 'Il Nostro Locale',
     'chi.place.p1':
       'Il nostro locale si trova nel cuore di Terrasini, in Via Vittorio Emanuele Orlando, n 123. Abbiamo creato uno spazio accogliente e moderno dove potete gustare i nostri hamburger e panini in un ambiente confortevole.',
@@ -102,11 +102,11 @@ export const translations: Record<Locale, Record<string, string>> = {
     'chi.title': 'About Us',
     'chi.team.title': 'Our Team',
     'chi.team.p1':
-      'We are a team passionate about food and quality. Every member of our staff shares the same vision: bringing freshly made burgers and sandwiches to Terrasini, with selected ingredients and recipes that blend tradition and innovation.',
+      'We are a family-run ristopub, built on genuine hospitality and authentic cooking. Every day we work together to serve dishes prepared on the spot with care and real flavor.',
     'chi.team.p2':
-      'Our passion for cooking is reflected in every dish we prepare. We believe food is not only nourishment, but an experience that brings people together and creates unforgettable moments.',
+      'One of our family members is a local fisherman, which means the fish we serve is always truly fresh, carefully selected and prepared to preserve the taste of the sea.',
     'chi.team.p3':
-      'Come visit us and discover the difference passion and attention to detail make in every burger and sandwich we serve.',
+      'In our venue you will find a warm, family atmosphere where tradition and quality meet, making every meal feel like home.',
     'chi.place.title': 'Our Venue',
     'chi.place.p1':
       'Our venue is in the heart of Terrasini, at Via Vittorio Emanuele Orlando, 123. We created a warm and modern space where you can enjoy our burgers and sandwiches comfortably.',
@@ -176,11 +176,11 @@ export const translations: Record<Locale, Record<string, string>> = {
     'chi.title': 'Quienes Somos',
     'chi.team.title': 'Nuestro Equipo',
     'chi.team.p1':
-      'Somos un equipo apasionado por la comida y la calidad. Cada miembro comparte la misma vision: llevar hamburguesas y bocadillos de calidad a Terrasini con ingredientes frescos y seleccionados.',
+      'Somos un ristopub familiar, nacido del amor por la cocina autentica y la hospitalidad. Cada dia trabajamos juntos para ofrecer platos preparados al momento con cuidado y sabor real.',
     'chi.team.p2':
-      'Nuestra pasion por la cocina se refleja en cada plato. Creemos que la comida no es solo nutricion, sino una experiencia que une a las personas.',
+      'Uno de nuestros familiares es pescador local: por eso el pescado que servimos es siempre fresquisimo, seleccionado con atencion y preparado para respetar el sabor del mar.',
     'chi.team.p3':
-      'Ven a visitarnos y descubre la diferencia que marcan la pasion y la atencion a los detalles.',
+      'En nuestro local encontraras un ambiente calido y familiar, donde tradicion y calidad se unen para hacerte sentir como en casa.',
     'chi.place.title': 'Nuestro Local',
     'chi.place.p1':
       'Nuestro local esta en el corazon de Terrasini, en Via Vittorio Emanuele Orlando, n 123. Creamos un espacio acogedor y moderno para disfrutar.',
@@ -250,11 +250,11 @@ export const translations: Record<Locale, Record<string, string>> = {
     'chi.title': 'Qui sommes-nous',
     'chi.team.title': 'Notre equipe',
     'chi.team.p1':
-      'Nous sommes une equipe passionnee par la cuisine et la qualite. Chaque membre partage la meme vision : apporter a Terrasini des burgers et sandwiches prepares avec des ingredients frais.',
+      'Nous sommes un ristopub familial, ne de l amour de la cuisine authentique et de l accueil. Chaque jour, nous travaillons ensemble pour proposer des plats prepares sur le moment avec soin.',
     'chi.team.p2':
-      'Notre passion se reflete dans chaque plat. Nous croyons que la nourriture est une experience qui rapproche les personnes.',
+      'Un membre de notre famille est pecheur local : c est pourquoi le poisson que nous servons est toujours tres frais, choisi avec attention et cuisine en respectant le gout de la mer.',
     'chi.team.p3':
-      'Venez nous voir et decouvrez la difference que font la passion et l attention aux details.',
+      'Dans notre salle, vous trouverez une ambiance chaleureuse et familiale, ou tradition et qualite se rencontrent pour vous faire sentir chez vous.',
     'chi.place.title': 'Notre restaurant',
     'chi.place.p1':
       'Notre restaurant se situe au coeur de Terrasini, Via Vittorio Emanuele Orlando, n 123. Un espace chaleureux et moderne vous attend.',
@@ -324,11 +324,11 @@ export const translations: Record<Locale, Record<string, string>> = {
     'chi.title': 'Uber uns',
     'chi.team.title': 'Unser Team',
     'chi.team.p1':
-      'Wir sind ein Team mit Leidenschaft fur gutes Essen und Qualitat. Unser Ziel: frische Burger und Sandwiches nach Terrasini zu bringen.',
+      'Wir sind ein familiengefuhrtes Ristopub, entstanden aus Liebe zu echter Kuche und Gastfreundschaft. Tag fur Tag arbeiten wir gemeinsam, um frische Gerichte mit Sorgfalt zu servieren.',
     'chi.team.p2':
-      'Unsere Leidenschaft spiegelt sich in jedem Gericht wider. Essen ist fur uns ein Erlebnis, das Menschen verbindet.',
+      'Ein Familienmitglied ist lokaler Fischer: deshalb ist der Fisch bei uns immer besonders frisch, sorgfaltig ausgewahlt und so zubereitet, dass der Geschmack des Meeres erhalten bleibt.',
     'chi.team.p3':
-      'Besuchen Sie uns und entdecken Sie den Unterschied, den Leidenschaft und Sorgfalt machen.',
+      'Bei uns finden Sie eine warme, familiaere Atmosphare, in der Tradition und Qualitaet zusammenkommen und jede Mahlzeit sich wie zu Hause anfuehlt.',
     'chi.place.title': 'Unser Lokal',
     'chi.place.p1':
       'Unser Lokal befindet sich im Herzen von Terrasini, Via Vittorio Emanuele Orlando, n 123. Ein moderner und einladender Ort fur Ihren Genuss.',
