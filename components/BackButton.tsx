@@ -1,6 +1,7 @@
 'use client'
 
 import { useRouter } from 'next/navigation'
+import { useLanguage } from '@/contexts/LanguageContext'
 
 interface BackButtonProps {
   label?: string
@@ -9,6 +10,7 @@ interface BackButtonProps {
 
 export default function BackButton({ label = 'Indietro', className = '' }: BackButtonProps) {
   const router = useRouter()
+  const { t } = useLanguage()
 
   return (
     <button
@@ -28,10 +30,11 @@ export default function BackButton({ label = 'Indietro', className = '' }: BackB
           d="M10 19l-7-7m0 0l7-7m-7 7h18"
         />
       </svg>
-      {label}
+      {label === 'Indietro' ? t('back.default') : label}
     </button>
   )
 }
+
 
 
 

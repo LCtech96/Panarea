@@ -3,8 +3,11 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import ThemeToggle from './ThemeToggle'
+import LanguageSwitcher from './LanguageSwitcher'
+import { useLanguage } from '@/contexts/LanguageContext'
 
 export default function Navbar() {
+  const { t } = useLanguage()
   const [showReviewModal, setShowReviewModal] = useState(false)
 
   const handleReviewClick = () => {
@@ -38,7 +41,7 @@ export default function Navbar() {
                   d="M4 6h16M4 12h16M4 18h16"
                 />
               </svg>
-              <span className="text-xs md:text-sm">Menù</span>
+              <span className="text-xs md:text-sm">{t('nav.menu')}</span>
             </Link>
 
             {/* Chi Siamo Button */}
@@ -59,7 +62,7 @@ export default function Navbar() {
                   d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
                 />
               </svg>
-              <span className="text-xs md:text-sm">Chi Siamo</span>
+              <span className="text-xs md:text-sm">{t('nav.about')}</span>
             </Link>
 
             {/* Google Reviews Button - Central */}
@@ -74,7 +77,7 @@ export default function Navbar() {
               >
                 <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
               </svg>
-              <span className="text-xs md:text-sm">Recensioni</span>
+              <span className="text-xs md:text-sm">{t('nav.reviews')}</span>
             </button>
 
             {/* Asporto Button */}
@@ -95,13 +98,19 @@ export default function Navbar() {
                   d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
                 />
               </svg>
-              <span className="text-xs md:text-sm">Asporto</span>
+              <span className="text-xs md:text-sm">{t('nav.takeaway')}</span>
             </Link>
             
             {/* Theme Toggle */}
+            <div className="hidden md:flex items-center">
+              <LanguageSwitcher />
+            </div>
             <div className="flex items-center">
               <ThemeToggle />
             </div>
+          </div>
+          <div className="md:hidden flex justify-center pb-2">
+            <LanguageSwitcher />
           </div>
         </div>
       </nav>
@@ -111,7 +120,7 @@ export default function Navbar() {
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 p-4">
           <div className="bg-white rounded-lg max-w-2xl w-full max-h-[90vh] overflow-hidden flex flex-col dark:bg-gray-900 dark:text-white">
             <div className="flex justify-between items-center p-4 border-b dark:border-gray-700">
-              <h2 className="text-xl font-bold text-gray-800 dark:text-white">Lascia una Recensione</h2>
+              <h2 className="text-xl font-bold text-gray-800 dark:text-white">{t('nav.leaveReview')}</h2>
               <button
                 onClick={closeReviewModal}
                 className="text-gray-500 hover:text-gray-700 text-2xl dark:text-gray-400 dark:hover:text-gray-200"
@@ -122,7 +131,7 @@ export default function Navbar() {
             <div className="flex-1 overflow-hidden p-6">
               <div className="h-full flex flex-col items-center justify-center space-y-4">
                 <p className="text-gray-700 text-center mb-4 dark:text-gray-300">
-                  Clicca sul pulsante qui sotto per lasciare una recensione su Google
+                  {t('nav.reviewPrompt')}
                 </p>
                 <a
                   href="https://share.google/1syh5aJu6nf3sKz7g"
@@ -137,10 +146,10 @@ export default function Navbar() {
                   >
                     <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
                   </svg>
-                  Lascia una Recensione su Google
+                  {t('nav.leaveReviewGoogle')}
                 </a>
                 <p className="text-sm text-gray-500 text-center mt-4 dark:text-gray-400">
-                  Si aprirà una nuova finestra con la pagina delle recensioni Google
+                  {t('nav.reviewNewWindow')}
                 </p>
               </div>
             </div>

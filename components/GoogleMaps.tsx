@@ -1,9 +1,12 @@
 'use client'
 
+import { useLanguage } from '@/contexts/LanguageContext'
+
 const MAP_QUERY =
   'Via Vittorio Emanuele Orlando 123, Terrasini, PA, Sicilia, Italia'
 
 export default function GoogleMaps() {
+  const { t } = useLanguage()
   const embedSrc = `https://www.google.com/maps?q=${encodeURIComponent(MAP_QUERY)}&output=embed`
   const openInMapsHref = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(MAP_QUERY)}`
 
@@ -27,7 +30,7 @@ export default function GoogleMaps() {
           rel="noopener noreferrer"
           className="text-orange-600 hover:text-orange-700 underline text-sm"
         >
-          Apri in Google Maps
+          {t('map.open')}
         </a>
       </div>
     </div>

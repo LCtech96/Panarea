@@ -4,7 +4,9 @@ import Navbar from '@/components/Navbar'
 import GoogleMaps from '@/components/GoogleMaps'
 import ContactSection from '@/components/ContactSection'
 import ClickableImage from '@/components/ClickableImage'
+import { useLanguage } from '@/contexts/LanguageContext'
 export default function Home() {
+  const { t } = useLanguage()
   return (
     <main className="min-h-screen bg-gray-100 dark:bg-gray-900">
       <Navbar />
@@ -52,7 +54,7 @@ export default function Home() {
                   GianAgo Risto-pub
                 </h1>
                 <p className="text-lg text-gray-600 dark:text-gray-300 mb-4">
-                  Risto-Pub • Terrasini, Palermo
+                  {t('home.subtitle')}
                 </p>
               </div>
             </div>
@@ -66,24 +68,18 @@ export default function Home() {
             <div className="lg:col-span-2 space-y-6">
               {/* Allergie e Intolleranze Section */}
               <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
-                <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Allergie e intolleranze</h2>
+                <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">{t('home.allergy.title')}</h2>
                 <div className="space-y-4 text-gray-700 dark:text-gray-300">
                   <p className="leading-relaxed">
-                    Amati clienti, gli ingredienti utilizzati da noi sono naturali e genuini, due qualita
-                    e bonta date in massima resa ai prodotti tra questi ingredienti sono presenti prodotti
-                    che tuttavia possono provocare intolleranze e allergie, pertanto e importante informare
-                    il personale addetto al fine di scongiurare il rischio di possibili contaminazioni crociate.
+                    {t('home.allergy.it')}
                   </p>
 
                   <p className="leading-relaxed">
-                    Dear customers, the ingredients we use are natural and genuine, where quality and
-                    goodness give the products their best performance. These ingredients include products
-                    that can, however, cause intolerances and allergies. Therefore, it is important to
-                    inform our staff in order to avoid the risk of possible cross contamination.
+                    {t('home.allergy.en')}
                   </p>
 
                   <p className="leading-relaxed font-semibold">
-                    Il menu puo variare in base alle disponibilita del giorno
+                    {t('home.menuNote')}
                   </p>
                 </div>
               </div>
@@ -94,10 +90,10 @@ export default function Home() {
             <div className="space-y-6">
               {/* Contact Info */}
               <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
-                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">Informazioni</h3>
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">{t('home.info')}</h3>
                 <div className="space-y-3 text-gray-700 dark:text-gray-300">
                   <p>
-                    <strong>Indirizzo:</strong><br />
+                    <strong>{t('home.addressLabel')}</strong><br />
                     Via Vittorio Emanuele Orlando, n 123, Terrasini, PA (Sicily)
                   </p>
                 </div>
@@ -111,7 +107,7 @@ export default function Home() {
           <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
             <div className="text-center mb-6">
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-2">
-                Dove Siamo
+                {t('home.where')}
               </h2>
               <p className="text-gray-600 dark:text-gray-300">
                 Via Vittorio Emanuele Orlando, n 123, Terrasini, PA (Sicily)
@@ -130,7 +126,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <p className="text-sm text-gray-400">
-              Creato da{' '}
+              {t('home.createdBy')}{' '}
               <a
                 href="https://facevoice.ai/ai-chat"
                 target="_blank"

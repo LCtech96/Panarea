@@ -7,6 +7,7 @@ import BackButton from '@/components/BackButton'
 import { useOrder } from '@/contexts/OrderContext'
 import { useRouter } from 'next/navigation'
 import { parseMenuDescription } from '@/lib/menuDescriptionCodec'
+import { useLanguage } from '@/contexts/LanguageContext'
 import {
   MENU_CATEGORY_ANTIPASTI,
   getDefaultAntipastiItemsForSeed,
@@ -47,6 +48,7 @@ function mapApiToDisplay(row: ApiMenuRow): DisplayMenuItem {
 }
 
 export default function MenuPage() {
+  const { t } = useLanguage()
   const { addToCart } = useOrder()
   const router = useRouter()
   const [menuItems, setMenuItems] = useState<DisplayMenuItem[]>([])
@@ -113,13 +115,13 @@ export default function MenuPage() {
   const handleAddToCart = (item: DisplayMenuItem) => {
     const selection = selectedItems[item.id]
     if (!selection || selection.quantity === 0) {
-      alert('Seleziona almeno una quantità')
+      alert(t('menu.selectQuantity'))
       return
     }
     const { ingredients } = parseMenuDescription(item.description)
     const modifications: string[] = []
     if (selection.removals.length > 0) {
-      modifications.push(`Rimuovi: ${selection.removals.join(', ')}`)
+      modifications.push(`${t('menu.removedPrefix')}: ${selection.removals.join(', ')}`)
     }
 
     addToCart({
@@ -130,7 +132,7 @@ export default function MenuPage() {
       modifications,
     })
 
-    alert(`${selection.quantity}x ${item.name} aggiunto al carrello!`)
+    alert(`${selection.quantity}x ${item.name} ${t('menu.addedAlert')}`)
     router.push('/asporto')
   }
 
@@ -144,15 +146,15 @@ export default function MenuPage() {
             <BackButton />
           </div>
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white text-center mb-4">
-            Il Nostro Menù
+            {t('menu.title')}
           </h1>
           <h2 className="text-2xl md:text-3xl font-bold text-red-900 dark:text-red-300 text-center mb-10">
-            Antipasti Pinse e Tagliere
+            {t('menu.section')}
           </h2>
 
           {loading ? (
             <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-8 text-center">
-              <p className="text-gray-600 dark:text-gray-300">Caricamento...</p>
+              <p className="text-gray-600 dark:text-gray-300">{t('menu.loading')}</p>
             </div>
           ) : (
             <div className="space-y-6">
@@ -196,7 +198,7 @@ export default function MenuPage() {
                     {showIngredientMods && (
                       <div className="mt-4">
                         <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
-                          Rimuovi ingredienti (opzionale):
+                          {t('menu.removeOptional')}
                         </label>
                         <div className="flex flex-wrap gap-2">
                           {removableIngredients.map((ingredient) => (
@@ -246,7 +248,7 @@ export default function MenuPage() {
                         onClick={() => handleAddToCart(item)}
                         className="flex-1 bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 rounded-lg font-semibold transition-colors"
                       >
-                        Aggiungi al Carrello
+                        {t('menu.addToCart')}
                       </button>
                     </div>
                   </div>
