@@ -158,20 +158,20 @@ export default function MenuPage() {
   }
 
   return (
-    <main className="min-h-screen bg-gray-100 dark:bg-gray-900">
+    <main className="site-shell pb-[calc(7rem+env(safe-area-inset-bottom,0px))] md:pb-10">
       <Navbar />
 
-      <div className="pt-16 md:pt-20 pb-20 md:pb-0">
-        <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
-          <div className="mb-6">
+      <div className="pb-6 pt-16 md:pb-10 md:pt-28">
+        <section className="mx-auto max-w-4xl px-4 py-10 sm:px-6 md:py-14 lg:px-8">
+          <div className="mb-8">
             <BackButton />
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white text-center mb-4">
+          <h1 className="mb-3 text-center text-4xl font-bold tracking-tight text-zinc-900 dark:text-white md:text-5xl">
             {t('menu.title')}
           </h1>
           {loading ? (
-            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-8 text-center">
-              <p className="text-gray-600 dark:text-gray-300">{t('menu.loading')}</p>
+            <div className="ios-card-solid p-12 text-center">
+              <p className="text-[15px] text-zinc-600 dark:text-zinc-400">{t('menu.loading')}</p>
             </div>
           ) : (
             <div className="space-y-6">
@@ -198,14 +198,14 @@ export default function MenuPage() {
                 return (
                   <div key={item.id} className="space-y-3">
                     {showSectionTitle && (
-                      <h2 className="text-2xl md:text-3xl font-bold text-red-900 dark:text-red-300 text-center mt-8">
+                      <h2 className="mx-auto mt-10 max-w-xl text-center text-xl font-bold tracking-tight text-orange-800 dark:text-orange-300 md:mt-12 md:text-2xl">
                         {sectionTitle}
                       </h2>
                     )}
-                    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
+                    <div className="ios-card-solid p-6 md:p-7">
                       <div className={`mb-3 flex gap-4 ${item.imageUrl ? 'sm:flex-row flex-col sm:items-start' : ''}`}>
                         {item.imageUrl ? (
-                          <div className="relative mx-auto h-36 w-full max-w-sm shrink-0 overflow-hidden rounded-xl bg-gray-100 dark:bg-gray-700 sm:mx-0 sm:h-28 sm:w-28">
+                          <div className="relative mx-auto h-36 w-full max-w-sm shrink-0 overflow-hidden rounded-2xl bg-zinc-100 ring-1 ring-black/5 dark:bg-zinc-800 dark:ring-white/10 sm:mx-0 sm:h-28 sm:w-28">
                             <Image
                               src={item.imageUrl}
                               alt={item.name}
@@ -217,27 +217,27 @@ export default function MenuPage() {
                         ) : null}
                         <div className="min-w-0 flex-1">
                       <div className="flex items-baseline gap-2 w-full mb-3">
-                        <span className="text-xl font-bold text-gray-900 dark:text-white shrink-0">
+                        <span className="shrink-0 text-xl font-bold tracking-tight text-zinc-900 dark:text-white">
                           {item.name}
                         </span>
-                        <span className="flex-1 border-b border-dotted border-gray-400 dark:border-gray-500 min-w-[1rem] mb-1.5" />
-                        <span className="text-xl font-bold text-orange-600 dark:text-orange-400 shrink-0">
+                        <span className="mb-1.5 min-w-[1rem] flex-1 border-b border-dotted border-zinc-300 dark:border-zinc-600" />
+                        <span className="shrink-0 text-xl font-bold tabular-nums text-orange-600 dark:text-orange-400">
                           €{item.price.toFixed(2)}
                         </span>
                       </div>
 
                       {it ? (
-                        <p className="text-gray-700 dark:text-gray-300 leading-relaxed">{it}</p>
+                        <p className="leading-relaxed text-zinc-700 dark:text-zinc-300">{it}</p>
                       ) : null}
                       {en ? (
-                        <p className="text-gray-600 dark:text-gray-400 italic mt-2 leading-relaxed">
+                        <p className="mt-2 leading-relaxed text-zinc-500 italic dark:text-zinc-400">
                           {en}
                         </p>
                       ) : null}
 
                       {showIngredientMods && (
                         <div className="mt-4">
-                          <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
+                          <label className="mb-2 block text-sm font-semibold text-zinc-700 dark:text-zinc-300">
                             {t('menu.removeOptional')}
                           </label>
                           <div className="flex flex-wrap gap-2">
@@ -246,10 +246,10 @@ export default function MenuPage() {
                                 key={ingredient}
                                 type="button"
                                 onClick={() => toggleRemoval(item.id, ingredient)}
-                                className={`px-3 py-1 rounded-full text-sm transition-colors ${
+                                className={`rounded-full border px-3.5 py-1.5 text-sm font-medium transition active:scale-[0.98] ${
                                   selection.removals.includes(ingredient)
-                                    ? 'bg-red-500 text-white'
-                                    : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300'
+                                    ? 'border-red-400 bg-red-500 text-white shadow-ios'
+                                    : 'border-zinc-200 bg-zinc-100 text-zinc-800 dark:border-zinc-600 dark:bg-zinc-800 dark:text-zinc-200'
                                 }`}
                               >
                                 - {ingredient}
@@ -259,18 +259,18 @@ export default function MenuPage() {
                         </div>
                       )}
 
-                      <div className="flex items-center gap-4 mt-6">
-                        <div className="flex items-center gap-2">
+                      <div className="mt-6 flex flex-wrap items-center gap-3">
+                        <div className="inline-flex items-center gap-1 rounded-full border border-zinc-200/90 bg-zinc-100/90 p-1 dark:border-zinc-600 dark:bg-zinc-800/90">
                           <button
                             type="button"
                             onClick={() =>
                               handleQuantityChange(item.id, selection.quantity - 1)
                             }
-                            className="w-8 h-8 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 font-bold hover:bg-gray-300 dark:hover:bg-gray-600"
+                            className="flex h-10 w-10 items-center justify-center rounded-full text-lg font-semibold text-zinc-700 transition hover:bg-white dark:text-zinc-200 dark:hover:bg-zinc-700"
                           >
-                            -
+                            −
                           </button>
-                          <span className="w-12 text-center font-semibold text-gray-900 dark:text-white">
+                          <span className="min-w-[2.25rem] text-center text-[15px] font-semibold tabular-nums text-zinc-900 dark:text-white">
                             {selection.quantity}
                           </span>
                           <button
@@ -278,7 +278,7 @@ export default function MenuPage() {
                             onClick={() =>
                               handleQuantityChange(item.id, selection.quantity + 1)
                             }
-                            className="w-8 h-8 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 font-bold hover:bg-gray-300 dark:hover:bg-gray-600"
+                            className="flex h-10 w-10 items-center justify-center rounded-full text-lg font-semibold text-zinc-700 transition hover:bg-white dark:text-zinc-200 dark:hover:bg-zinc-700"
                           >
                             +
                           </button>
@@ -286,7 +286,7 @@ export default function MenuPage() {
                         <button
                           type="button"
                           onClick={() => handleAddToCart(item)}
-                          className="flex-1 bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 rounded-lg font-semibold transition-colors"
+                          className="min-h-[44px] flex-1 rounded-full bg-gradient-to-b from-orange-400 to-orange-600 px-6 py-2.5 text-[15px] font-semibold text-white shadow-ios transition hover:brightness-105 active:scale-[0.99]"
                         >
                           {t('menu.addToCart')}
                         </button>

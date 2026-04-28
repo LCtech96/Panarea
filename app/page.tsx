@@ -5,38 +5,35 @@ import GoogleMaps from '@/components/GoogleMaps'
 import ContactSection from '@/components/ContactSection'
 import ClickableImage from '@/components/ClickableImage'
 import { useLanguage } from '@/contexts/LanguageContext'
+
 export default function Home() {
   const { t } = useLanguage()
   return (
-    <main className="min-h-screen bg-gray-100 dark:bg-gray-900">
+    <main className="site-shell pb-[calc(7rem+env(safe-area-inset-bottom,0px))] md:pb-10">
       <Navbar />
-      
-      {/* Main content with padding for navbar */}
-      <div className="pt-0 md:pt-20 pb-20 md:pb-0">
-        {/* Facebook-style Profile Section */}
-        <div className="bg-white dark:bg-gray-800">
-          {/* Cover Photo (Banner) */}
-          <div className="relative w-full h-[300px] md:h-[400px] bg-stone-200 dark:bg-stone-800">
-            <ClickableImage
-              src="/gianago-brand.png"
-              alt="GianAgo Food & Drink - Copertina"
-              fill
-              fit="contain"
-              className="w-full h-full"
-              priority
-              quality={100}
-              sizes="100vw"
-            />
-            {/* Stesso logo come avatar (stile profilo) */}
-            <div className="absolute bottom-0 left-4 md:left-8 transform translate-y-1/2 z-10">
-              <div className="w-32 h-32 md:w-40 md:h-40 rounded-full border-4 border-white dark:border-gray-800 shadow-lg overflow-visible bg-stone-100 dark:bg-stone-900">
-                <div className="w-full h-full rounded-full overflow-hidden">
+
+      <div className="pt-0 md:pt-28">
+        <div className="overflow-hidden bg-white/60 dark:bg-zinc-900/40">
+          <div className="relative mx-auto max-w-6xl px-4 pb-2 pt-4 md:px-8 md:pt-8">
+            <div className="relative aspect-[21/9] min-h-[220px] overflow-hidden rounded-[1.75rem] shadow-ios-lg ring-1 ring-black/5 dark:ring-white/10 md:min-h-[320px] md:rounded-[2rem]">
+              <ClickableImage
+                src="/gianago-brand.png"
+                alt="GianAgo Food & Drink - Copertina"
+                fill
+                fit="contain"
+                className="bg-gradient-to-br from-zinc-100 to-zinc-200 dark:from-zinc-800 dark:to-zinc-900"
+                priority
+                quality={100}
+                sizes="100vw"
+              />
+              <div className="absolute bottom-0 left-5 z-10 translate-y-1/2 md:left-10">
+                <div className="h-28 w-28 overflow-hidden rounded-[2rem] bg-white shadow-ios-lg ring-[6px] ring-white dark:bg-zinc-900 dark:ring-zinc-900 md:h-36 md:w-36 md:rounded-[2.25rem] md:ring-8">
                   <ClickableImage
                     src="/gianago-brand.png"
                     alt="GianAgo Food & Drink - Logo"
                     fill
                     fit="contain"
-                    className="rounded-full"
+                    className="rounded-[2rem]"
                     priority
                   />
                 </div>
@@ -44,72 +41,54 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Profile Section */}
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="relative">
-
-              {/* Profile Info */}
-              <div className="pt-20 md:pt-24 pb-6">
-                <h1 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-2">
+          <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+            <div className="relative pt-16 md:pt-20">
+              <div className="pb-8 md:pb-10">
+                <h1 className="mb-2 text-3xl font-bold tracking-tight text-zinc-900 dark:text-white md:text-4xl">
                   GianAgo Risto-pub
                 </h1>
-                <p className="text-lg text-gray-600 dark:text-gray-300 mb-4">
-                  {t('home.subtitle')}
+                <p className="text-lg font-medium text-zinc-600 dark:text-zinc-400">{t('home.subtitle')}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 gap-6 lg:grid-cols-3 lg:gap-8">
+            <div className="space-y-6 lg:col-span-2">
+              <section className="ios-card-solid p-7 md:p-8">
+                <h2 className="mb-5 text-2xl font-bold tracking-tight text-zinc-900 dark:text-white">
+                  {t('home.allergy.title')}
+                </h2>
+                <div className="space-y-4 text-[15px] leading-relaxed text-zinc-600 dark:text-zinc-300 md:text-base">
+                  <p>{t('home.allergy.it')}</p>
+                  <p>{t('home.allergy.en')}</p>
+                  <p className="font-semibold text-zinc-800 dark:text-zinc-200">{t('home.menuNote')}</p>
+                </div>
+              </section>
+            </div>
+
+            <aside className="space-y-6">
+              <section className="ios-card-solid p-7">
+                <h3 className="mb-4 text-lg font-bold tracking-tight text-zinc-900 dark:text-white">
+                  {t('home.info')}
+                </h3>
+                <p className="text-[15px] leading-relaxed text-zinc-600 dark:text-zinc-300">
+                  <span className="font-semibold text-zinc-800 dark:text-zinc-200">{t('home.addressLabel')} </span>
+                  Via Vittorio Emanuele Orlando, n 123, Terrasini, PA (Sicily)
                 </p>
-              </div>
-            </div>
+              </section>
+            </aside>
           </div>
         </div>
 
-        {/* Content Section */}
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            {/* Main Content */}
-            <div className="lg:col-span-2 space-y-6">
-              {/* Allergie e Intolleranze Section */}
-              <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
-                <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">{t('home.allergy.title')}</h2>
-                <div className="space-y-4 text-gray-700 dark:text-gray-300">
-                  <p className="leading-relaxed">
-                    {t('home.allergy.it')}
-                  </p>
-
-                  <p className="leading-relaxed">
-                    {t('home.allergy.en')}
-                  </p>
-
-                  <p className="leading-relaxed font-semibold">
-                    {t('home.menuNote')}
-                  </p>
-                </div>
-              </div>
-
-            </div>
-
-            {/* Sidebar */}
-            <div className="space-y-6">
-              {/* Contact Info */}
-              <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
-                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">{t('home.info')}</h3>
-                <div className="space-y-3 text-gray-700 dark:text-gray-300">
-                  <p>
-                    <strong>{t('home.addressLabel')}</strong><br />
-                    Via Vittorio Emanuele Orlando, n 123, Terrasini, PA (Sicily)
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Google Maps Section */}
-        <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 pb-16 md:pb-8">
-          <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
-            <div className="text-center mb-6">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-2">
+        <section className="mx-auto max-w-6xl px-4 pb-16 pt-2 sm:px-6 md:pb-12 lg:px-8">
+          <div className="ios-card-solid overflow-hidden p-6 md:p-10">
+            <div className="mb-8 text-center">
+              <h2 className="mb-2 text-3xl font-bold tracking-tight text-zinc-900 dark:text-white md:text-4xl">
                 {t('home.where')}
               </h2>
-              <p className="text-gray-600 dark:text-gray-300">
+              <p className="text-zinc-600 dark:text-zinc-400">
                 Via Vittorio Emanuele Orlando, n 123, Terrasini, PA (Sicily)
               </p>
             </div>
@@ -118,25 +97,21 @@ export default function Home() {
         </section>
       </div>
 
-      {/* Contact Section */}
       <ContactSection />
 
-      {/* Facevoice.ai Attribution */}
-      <footer className="bg-gray-900 text-white py-4">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <p className="text-sm text-gray-400">
-              {t('home.createdBy')}{' '}
-              <a
-                href="https://facevoice.ai/ai-chat"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-orange-400 hover:text-orange-500 transition-colors font-semibold"
-              >
-                Facevoice.ai
-              </a>
-            </p>
-          </div>
+      <footer className="border-t border-white/10 bg-zinc-950/95 py-6 text-white backdrop-blur-xl dark:bg-black/90">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <p className="text-center text-sm text-zinc-400">
+            {t('home.createdBy')}{' '}
+            <a
+              href="https://facevoice.ai/ai-chat"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-semibold text-orange-400 transition hover:text-orange-300"
+            >
+              Facevoice.ai
+            </a>
+          </p>
         </div>
       </footer>
     </main>

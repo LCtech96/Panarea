@@ -45,49 +45,43 @@ export default function AsportoPage() {
   }
 
   return (
-    <main className="min-h-screen bg-gray-100 dark:bg-gray-900">
+    <main className="site-shell pb-[calc(7rem+env(safe-area-inset-bottom,0px))] md:pb-10">
       <Navbar />
       
-      <div className="pt-16 md:pt-20 pb-20 md:pb-0">
-        <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
-          <div className="mb-6">
+      <div className="pb-10 pt-16 md:pb-12 md:pt-28">
+        <section className="mx-auto max-w-4xl px-4 py-10 sm:px-6 md:py-14 lg:px-8">
+          <div className="mb-8">
             <BackButton />
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white text-center mb-12">
+          <h1 className="mb-10 text-center text-4xl font-bold tracking-tight text-zinc-900 dark:text-white md:text-5xl">
             {t('cart.title')}
           </h1>
           
           {orders.length === 0 ? (
-            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-8 text-center">
-              <p className="text-lg text-gray-600 dark:text-gray-300 mb-4">
+            <div className="ios-card-solid p-10 text-center">
+              <p className="mb-3 text-lg text-zinc-600 dark:text-zinc-400">
                 {t('cart.empty')}
               </p>
-              <p className="text-gray-500 dark:text-gray-400">
+              <p className="text-zinc-500 dark:text-zinc-500">
                 {t('cart.gotoMenu')}
               </p>
             </div>
           ) : (
-            <div className="space-y-4 mb-6">
+            <div className="mb-6 space-y-4">
               {orders.map((item) => (
-                <div
-                  key={item.id}
-                  className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6"
-                >
-                  <div className="flex justify-between items-start mb-4">
-                    <div className="flex-1">
-                      <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
+                <div key={item.id} className="ios-card-solid p-6 md:p-7">
+                  <div className="mb-4 flex items-start justify-between gap-3">
+                    <div className="min-w-0 flex-1">
+                      <h3 className="mb-2 text-xl font-bold tracking-tight text-zinc-900 dark:text-white">
                         {item.name}
                       </h3>
-                      <p className="text-gray-600 dark:text-gray-300">
+                      <p className="tabular-nums text-zinc-600 dark:text-zinc-400">
                         €{item.price.toFixed(2)} {t('cart.each')}
                       </p>
                       {item.modifications && item.modifications.length > 0 && (
                         <div className="mt-2">
                           {item.modifications.map((mod, idx) => (
-                            <p
-                              key={idx}
-                              className="text-sm text-gray-500 dark:text-gray-400"
-                            >
+                            <p key={idx} className="text-sm text-zinc-500 dark:text-zinc-500">
                               {mod}
                             </p>
                           ))}
@@ -95,8 +89,10 @@ export default function AsportoPage() {
                       )}
                     </div>
                     <button
+                      type="button"
                       onClick={() => removeFromCart(item.id)}
-                      className="text-red-500 hover:text-red-700 ml-4"
+                      className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-red-500/10 text-red-600 transition hover:bg-red-500/20 dark:text-red-400"
+                      aria-label="Rimuovi"
                     >
                       <svg
                         className="w-6 h-6"
@@ -113,25 +109,27 @@ export default function AsportoPage() {
                       </svg>
                     </button>
                   </div>
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-2">
+                  <div className="flex flex-wrap items-center justify-between gap-3">
+                    <div className="inline-flex items-center gap-1 rounded-full border border-zinc-200/90 bg-zinc-100/90 p-1 dark:border-zinc-600 dark:bg-zinc-800/90">
                       <button
+                        type="button"
                         onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                        className="w-8 h-8 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 font-bold hover:bg-gray-300 dark:hover:bg-gray-600"
+                        className="flex h-10 w-10 items-center justify-center rounded-full text-lg font-semibold text-zinc-700 transition hover:bg-white dark:text-zinc-200 dark:hover:bg-zinc-700"
                       >
-                        -
+                        −
                       </button>
-                      <span className="w-12 text-center font-semibold text-gray-900 dark:text-white">
+                      <span className="min-w-[2.25rem] text-center text-[15px] font-semibold tabular-nums text-zinc-900 dark:text-white">
                         {item.quantity}
                       </span>
                       <button
+                        type="button"
                         onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                        className="w-8 h-8 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 font-bold hover:bg-gray-300 dark:hover:bg-gray-600"
+                        className="flex h-10 w-10 items-center justify-center rounded-full text-lg font-semibold text-zinc-700 transition hover:bg-white dark:text-zinc-200 dark:hover:bg-zinc-700"
                       >
                         +
                       </button>
                     </div>
-                    <p className="text-xl font-bold text-orange-600 dark:text-orange-400">
+                    <p className="text-xl font-bold tabular-nums text-orange-600 dark:text-orange-400">
                       €{(item.price * item.quantity).toFixed(2)}
                     </p>
                   </div>
@@ -141,25 +139,27 @@ export default function AsportoPage() {
           )}
 
           {orders.length > 0 && (
-            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 mb-6">
-              <div className="flex justify-between items-center mb-4">
-                <span className="text-2xl font-bold text-gray-900 dark:text-white">
+            <div className="ios-card-solid mb-6 p-6 md:p-7">
+              <div className="mb-6 flex items-center justify-between gap-4">
+                <span className="text-2xl font-bold tracking-tight text-zinc-900 dark:text-white">
                   {t('cart.total')}
                 </span>
-                <span className="text-3xl font-bold text-orange-600 dark:text-orange-400">
+                <span className="text-3xl font-bold tabular-nums text-orange-600 dark:text-orange-400">
                   €{getTotal().toFixed(2)}
                 </span>
               </div>
-              <div className="flex gap-4">
+              <div className="flex flex-col gap-3 sm:flex-row">
                 <button
+                  type="button"
                   onClick={clearCart}
-                  className="flex-1 bg-gray-500 hover:bg-gray-600 text-white px-6 py-3 rounded-lg font-semibold transition-colors"
+                  className="rounded-full border border-zinc-300 bg-zinc-100 px-6 py-3.5 text-[15px] font-semibold text-zinc-800 shadow-ios transition hover:bg-zinc-200 active:scale-[0.99] dark:border-zinc-600 dark:bg-zinc-800 dark:text-zinc-100 dark:hover:bg-zinc-700 sm:flex-1"
                 >
                   {t('cart.clear')}
                 </button>
                 <button
+                  type="button"
                   onClick={handleSendWhatsApp}
-                  className="flex-1 bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-lg font-semibold transition-colors flex items-center justify-center gap-2"
+                  className="flex flex-1 items-center justify-center gap-2 rounded-full bg-gradient-to-b from-emerald-400 to-emerald-600 px-6 py-3.5 text-[15px] font-semibold text-white shadow-ios transition hover:brightness-105 active:scale-[0.99]"
                 >
                   <svg
                     className="w-6 h-6"
@@ -174,11 +174,11 @@ export default function AsportoPage() {
             </div>
           )}
 
-          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-8 text-center">
-            <p className="text-lg text-gray-700 dark:text-gray-300 mb-4">
+          <div className="ios-card-solid mt-8 p-8 text-center">
+            <p className="mb-4 text-lg text-zinc-700 dark:text-zinc-300">
               {t('cart.help1')}
             </p>
-            <p className="text-gray-600 dark:text-gray-400">
+            <p className="text-zinc-600 dark:text-zinc-400">
               {t('cart.help2')}
             </p>
           </div>

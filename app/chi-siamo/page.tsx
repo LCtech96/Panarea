@@ -9,40 +9,40 @@ import { useLanguage } from '@/contexts/LanguageContext'
 export default function ChiSiamoPage() {
   const { t } = useLanguage()
   return (
-    <main className="min-h-screen bg-gray-100 dark:bg-gray-900">
+    <main className="site-shell pb-[calc(7rem+env(safe-area-inset-bottom,0px))] md:pb-10">
       <Navbar />
       
-      <div className="pt-16 md:pt-20 pb-20 md:pb-0">
-        <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
-          <div className="mb-6">
+      <div className="pb-10 pt-16 md:pb-12 md:pt-28">
+        <section className="mx-auto max-w-6xl px-4 py-10 sm:px-6 md:py-14 lg:px-8">
+          <div className="mb-8">
             <BackButton />
           </div>
           
-          <h1 className="text-4xl md:text-5xl font-bold text-center mb-12 text-gray-900 dark:text-white">
+          <h1 className="mb-12 text-center text-4xl font-bold tracking-tight text-zinc-900 dark:text-white md:text-5xl">
             {t('chi.title')}
           </h1>
 
-          <div className="space-y-12">
+          <div className="space-y-10 md:space-y-12">
             {/* Team Section */}
-            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
-              <div className="p-6 md:p-8">
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6">
+            <div className="overflow-hidden ios-card-solid">
+              <div className="p-6 md:p-10">
+                <h2 className="mb-6 text-3xl font-bold tracking-tight text-zinc-900 dark:text-white md:text-4xl">
                   {t('chi.team.title')}
                 </h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div className="grid grid-cols-1 items-center gap-8 md:grid-cols-2">
                   <div className="order-2 md:order-1">
-                    <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+                    <p className="mb-4 text-lg leading-relaxed text-zinc-700 dark:text-zinc-300">
                       {t('chi.team.p1')}
                     </p>
-                    <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+                    <p className="mb-4 text-lg leading-relaxed text-zinc-700 dark:text-zinc-300">
                       {t('chi.team.p2')}
                     </p>
-                    <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+                    <p className="text-lg leading-relaxed text-zinc-700 dark:text-zinc-300">
                       {t('chi.team.p3')}
                     </p>
                   </div>
                   <div className="order-1 md:order-2">
-                    <div className="relative w-full h-[300px] md:h-[400px] rounded-lg overflow-hidden bg-gray-200 dark:bg-gray-700">
+                    <div className="relative h-[280px] w-full overflow-hidden rounded-[1.5rem] bg-zinc-200 shadow-ios ring-1 ring-black/5 dark:bg-zinc-700 dark:ring-white/10 md:h-[380px] md:rounded-[2rem]">
                       <ClickableImage
                         src="/pana.png"
                         alt="Il Team di GianAgo Risto-pub"
@@ -57,14 +57,14 @@ export default function ChiSiamoPage() {
             </div>
 
             {/* Locale Section */}
-            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
-              <div className="p-6 md:p-8">
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6">
+            <div className="overflow-hidden ios-card-solid">
+              <div className="p-6 md:p-10">
+                <h2 className="mb-6 text-3xl font-bold tracking-tight text-zinc-900 dark:text-white md:text-4xl">
                   {t('chi.place.title')}
                 </h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div className="grid grid-cols-1 items-center gap-8 md:grid-cols-2">
                   <div>
-                    <div className="relative w-full h-[300px] md:h-[400px] rounded-lg overflow-hidden bg-gray-200 dark:bg-gray-700">
+                    <div className="relative h-[280px] w-full overflow-hidden rounded-[1.5rem] bg-zinc-200 shadow-ios ring-1 ring-black/5 dark:bg-zinc-700 dark:ring-white/10 md:h-[380px] md:rounded-[2rem]">
                       <ClickableImage
                         src="/lo.png"
                         alt="Il Locale di GianAgo Risto-pub"
@@ -75,13 +75,13 @@ export default function ChiSiamoPage() {
                     </div>
                   </div>
                   <div>
-                    <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+                    <p className="mb-4 text-lg leading-relaxed text-zinc-700 dark:text-zinc-300">
                       {t('chi.place.p1')}
                     </p>
-                    <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+                    <p className="mb-4 text-lg leading-relaxed text-zinc-700 dark:text-zinc-300">
                       {t('chi.place.p2')}
                     </p>
-                    <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+                    <p className="text-lg leading-relaxed text-zinc-700 dark:text-zinc-300">
                       {t('chi.place.p3')}
                     </p>
                   </div>
@@ -90,11 +90,11 @@ export default function ChiSiamoPage() {
             </div>
 
             {/* Mission Section */}
-            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 md:p-8">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6">
+            <div className="ios-card-solid p-6 md:p-10">
+              <h2 className="mb-6 text-3xl font-bold tracking-tight text-zinc-900 dark:text-white md:text-4xl">
                 {t('chi.mission.title')}
               </h2>
-              <div className="space-y-4 text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+              <div className="space-y-4 text-lg leading-relaxed text-zinc-700 dark:text-zinc-300">
                 <p>
                   {t('chi.mission.p1')}
                 </p>

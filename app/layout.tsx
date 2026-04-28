@@ -35,8 +35,11 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="it" className={`${permanentMarker.variable} ${kalam.variable} ${greatVibes.variable} bg-white`}>
-      <body className="bg-white dark:bg-gray-900 transition-colors">
+    <html
+      lang="it"
+      className={`${permanentMarker.variable} ${kalam.variable} ${greatVibes.variable} bg-white antialiased`}
+    >
+      <body className="bg-white transition-colors dark:bg-zinc-950">
         <Providers>
           {children}
         </Providers>

@@ -12,13 +12,13 @@ export default function LanguageSwitcher() {
   }
 
   return (
-    <label className="flex items-center gap-2 text-xs text-gray-700 dark:text-gray-200">
+    <label className="flex items-center gap-2 text-xs font-medium text-zinc-600 dark:text-zinc-300">
       <span className="hidden md:inline">{t('lang.label')}</span>
       <select
         aria-label={t('lang.label')}
         value={locale}
         onChange={handleChange}
-        className="rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-100 px-2 py-1 text-xs"
+        className="cursor-pointer rounded-full border border-zinc-200/90 bg-white/90 px-3 py-1.5 text-xs font-semibold text-zinc-800 shadow-sm backdrop-blur-sm transition hover:border-orange-300 focus:border-orange-400 focus:outline-none focus:ring-2 focus:ring-orange-400/30 dark:border-zinc-600 dark:bg-zinc-800/90 dark:text-zinc-100"
       >
         <option value="it">IT</option>
         <option value="en">EN</option>
