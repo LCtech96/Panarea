@@ -198,7 +198,7 @@ export default function MenuPage() {
                 return (
                   <div key={item.id} className="space-y-3">
                     {showSectionTitle && (
-                      <h2 className="mx-auto mt-10 max-w-xl text-center text-xl font-bold tracking-tight text-orange-800 dark:text-orange-300 md:mt-12 md:text-2xl">
+                      <h2 className="mx-auto mt-10 max-w-xl text-center text-xl font-bold tracking-tight text-green-800 dark:text-lime-300 md:mt-12 md:text-2xl">
                         {sectionTitle}
                       </h2>
                     )}
@@ -221,7 +221,7 @@ export default function MenuPage() {
                           {item.name}
                         </span>
                         <span className="mb-1.5 min-w-[1rem] flex-1 border-b border-dotted border-zinc-300 dark:border-zinc-600" />
-                        <span className="shrink-0 text-xl font-bold tabular-nums text-orange-600 dark:text-orange-400">
+                        <span className="shrink-0 text-xl font-bold tabular-nums text-lime-600 dark:text-lime-400">
                           €{item.price.toFixed(2)}
                         </span>
                       </div>
@@ -286,7 +286,7 @@ export default function MenuPage() {
                         <button
                           type="button"
                           onClick={() => handleAddToCart(item)}
-                          className="min-h-[44px] flex-1 rounded-full bg-gradient-to-b from-orange-400 to-orange-600 px-6 py-2.5 text-[15px] font-semibold text-white shadow-ios transition hover:brightness-105 active:scale-[0.99]"
+                          className="min-h-[44px] flex-1 rounded-full bg-gradient-to-b from-yellow-300 via-lime-400 to-green-600 px-6 py-2.5 text-[15px] font-semibold text-zinc-900 shadow-ios transition hover:brightness-105 active:scale-[0.99] dark:from-lime-400 dark:via-lime-500 dark:to-green-700 dark:text-zinc-950"
                         >
                           {t('menu.addToCart')}
                         </button>
