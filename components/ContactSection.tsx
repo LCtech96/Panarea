@@ -2,7 +2,7 @@
 
 export default function ContactSection() {
   const email = 'gianagoterrasini@gmail.com'
-  const whatsappNumber = '393123456789' // Replace with actual WhatsApp number
+  const whatsappNumber = '393773899808'
   const whatsappMessage = encodeURIComponent('Ciao! Vorrei informazioni su GianAgo Risto-pub')
   
   const socialLinks = {

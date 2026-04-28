@@ -35,7 +35,7 @@ export default function AsportoPage() {
       return
     }
 
-    const whatsappNumber = '393123456789' // Sostituisci con il numero reale
+    const whatsappNumber = '393773899808'
     const message = formatOrderForWhatsApp()
     const url = `https://wa.me/${whatsappNumber}?text=${message}`
     
