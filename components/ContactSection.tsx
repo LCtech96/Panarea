@@ -4,7 +4,7 @@ import { useLanguage } from '@/contexts/LanguageContext'
 
 export default function ContactSection() {
   const { t } = useLanguage()
-  const email = 'gianagoterrasini@gmail.com'
+  const email = 'gianagoristopub@gmail.com'
   const whatsappNumber = '393773899808'
   const whatsappMessage = encodeURIComponent(t('contact.whatsappText'))
   
