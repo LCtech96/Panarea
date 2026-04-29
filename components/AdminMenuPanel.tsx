@@ -88,6 +88,7 @@ export default function AdminMenuPanel() {
   const [loading, setLoading] = useState(true)
   const [galleryLoading, setGalleryLoading] = useState(false)
   const [saving, setSaving] = useState(false)
+  const [importing, setImporting] = useState(false)
   const [form, setForm] = useState(emptyForm)
   const [editingId, setEditingId] = useState<number | null>(null)
 
@@ -253,6 +254,38 @@ export default function AdminMenuPanel() {
     }
   }
 
+  const handleImportDefaults = async () => {
+    if (
+      !confirm(
+        'Verranno aggiunti tutti i piatti del menu ufficiale che non sono ancora nel database (stessa categoria e stesso numero ordine). Le righe gia esistenti non vengono modificate (cosi conservi foto e modifiche). Continuare?'
+      )
+    )
+      return
+    setImporting(true)
+    try {
+      const res = await fetch('/api/admin/menu/import', { method: 'POST', credentials: 'include' })
+      const json = await res.json()
+      if (!json.success) {
+        alert(json.error || 'Import non riuscito. Verifica DATABASE_URL su Vercel.')
+        return
+      }
+      const { inserted, skipped, total } = json.data as {
+        inserted: number
+        skipped: number
+        total: number
+      }
+      alert(
+        `Import completato: ${inserted} nuovi piatti, ${skipped} gia presenti (lista ufficiale: ${total} piatti).`
+      )
+      await load()
+    } catch (e) {
+      console.error(e)
+      alert('Errore durante l import.')
+    } finally {
+      setImporting(false)
+    }
+  }
+
   if (loading) {
     return (
       <p className="text-base font-medium text-zinc-900 dark:text-zinc-100">Caricamento menu...</p>
@@ -267,6 +300,24 @@ export default function AdminMenuPanel() {
         tab <strong className="text-zinc-900 dark:text-white">Immagini</strong>, poi sceglila qui dal menu a tendina.
         Ingredienti e prezzi si aggiornano dal modulo sotto.
       </p>
+
+      <div className="rounded-xl border-2 border-emerald-600/40 bg-emerald-50/90 p-4 dark:border-emerald-700/50 dark:bg-emerald-950/40">
+        <p className="mb-3 text-sm font-semibold text-zinc-900 dark:text-white">Import rapido menu completo</p>
+        <p className="mb-4 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
+          Carica nel database tutti i piatti della lista ufficiale (stesso elenco del sito pubblico) cosi puoi
+          assegnare subito la foto a ogni piatto. I piatti gia presenti con lo stesso{' '}
+          <strong className="text-zinc-900 dark:text-white">ordine (position)</strong> nella stessa categoria non
+          vengono duplicati ne sovrascritti.
+        </p>
+        <button
+          type="button"
+          disabled={importing || saving}
+          onClick={handleImportDefaults}
+          className="rounded-lg bg-emerald-600 px-5 py-2.5 text-sm font-bold text-white shadow transition hover:bg-emerald-700 disabled:opacity-50 dark:bg-emerald-600 dark:hover:bg-emerald-500"
+        >
+          {importing ? 'Import in corso…' : 'Importa tutti i piatti del menu'}
+        </button>
+      </div>
 
       <div
         ref={formRef}

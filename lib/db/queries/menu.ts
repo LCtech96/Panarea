@@ -1,3 +1,4 @@
+import { MENU_CATEGORY_ANTIPASTI, getDefaultAntipastiItemsForSeed } from '@/lib/menu-antipasti-defaults'
 import { query } from '../neon'
 
 export interface MenuItem {
@@ -142,6 +143,45 @@ export async function updateMenuItem(id: number, data: Partial<MenuItem>) {
 export async function deleteMenuItem(id: number) {
   const result = await query<MenuItem>('DELETE FROM menu_items WHERE id = $1 RETURNING *', [id])
   return result[0] || null
+}
+
+/**
+ * Inserisce nel DB i piatti del menu predefinito che non esistono già
+ * (stessa category + position). Non sovrascrive righe esistenti (così restano immagine/prezzo modificati).
+ */
+export async function importMissingDefaultMenuItems(): Promise<{
+  inserted: number
+  skipped: number
+  total: number
+}> {
+  const defaults = getDefaultAntipastiItemsForSeed()
+  const rows = await query<{ position: number }>(
+    `SELECT position FROM menu_items WHERE category = $1`,
+    [MENU_CATEGORY_ANTIPASTI]
+  )
+  const taken = new Set(rows.map((r) => r.position))
+  let inserted = 0
+  let skipped = 0
+
+  for (const row of defaults) {
+    if (taken.has(row.position)) {
+      skipped++
+      continue
+    }
+    await createMenuItem({
+      name: row.name,
+      description: row.description || undefined,
+      price: row.price,
+      category: MENU_CATEGORY_ANTIPASTI,
+      position: row.position,
+      available: true,
+      featured: false,
+    })
+    inserted++
+    taken.add(row.position)
+  }
+
+  return { inserted, skipped, total: defaults.length }
 }
 
 
