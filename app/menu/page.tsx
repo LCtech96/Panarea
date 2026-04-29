@@ -163,15 +163,15 @@ export default function MenuPage() {
   }
 
   return (
-    <main className="site-shell pb-[calc(4.75rem+env(safe-area-inset-bottom,0px))] md:pb-10">
+    <main className="site-shell w-full min-w-0 max-w-[100dvw] pb-[calc(4.75rem+env(safe-area-inset-bottom,0px))] md:pb-10">
       <Navbar />
 
-      <div className="pb-6 pt-14 md:pb-10 md:pt-28">
-        <section className="mx-auto max-w-4xl px-4 py-10 sm:px-6 md:py-14 lg:px-8">
+      <div className="w-full min-w-0 pb-6 pt-14 md:pb-10 md:pt-28">
+        <section className="mx-auto w-full min-w-0 max-w-4xl px-3 py-10 sm:px-6 md:py-14 lg:px-8">
           <div className="mb-8">
             <BackButton />
           </div>
-          <h1 className="mb-3 text-center text-4xl font-bold tracking-tight text-zinc-900 dark:text-white md:text-5xl">
+          <h1 className="mb-3 break-words px-1 text-center text-3xl font-bold tracking-tight text-zinc-900 dark:text-white sm:text-4xl md:text-5xl">
             {t('menu.title')}
           </h1>
           {loading ? (
@@ -179,7 +179,7 @@ export default function MenuPage() {
               <p className="text-[15px] text-zinc-600 dark:text-zinc-400">{t('menu.loading')}</p>
             </div>
           ) : (
-            <div className="space-y-6">
+            <div className="w-full min-w-0 space-y-6">
               {menuItems
                 .slice()
                 .sort((a, b) => a.position - b.position)
@@ -205,12 +205,14 @@ export default function MenuPage() {
                 return (
                   <div key={item.id} className="space-y-3">
                     {showSectionTitle && (
-                      <h2 className="mx-auto mt-10 max-w-xl text-center text-xl font-bold tracking-tight text-green-800 dark:text-lime-300 md:mt-12 md:text-2xl">
+                      <h2 className="mx-auto mt-10 max-w-xl break-words px-2 text-center text-lg font-bold leading-snug tracking-tight text-green-800 dark:text-lime-300 sm:text-xl md:mt-12 md:text-2xl">
                         {t(sectionKey)}
                       </h2>
                     )}
-                    <div className="ios-card-solid p-6 md:p-7">
-                      <div className={`mb-3 flex gap-4 ${item.imageUrl ? 'sm:flex-row flex-col sm:items-start' : ''}`}>
+                    <div className="ios-card-solid p-4 sm:p-6 md:p-7">
+                      <div
+                        className={`mb-3 flex w-full min-w-0 gap-3 sm:gap-4 ${item.imageUrl ? 'flex-col sm:flex-row sm:items-start' : ''}`}
+                      >
                         {item.imageUrl ? (
                           <div className="relative mx-auto h-36 w-full max-w-sm shrink-0 overflow-hidden rounded-2xl bg-zinc-100 ring-1 ring-black/5 dark:bg-zinc-800 dark:ring-white/10 sm:mx-0 sm:h-28 sm:w-28">
                             <Image
@@ -222,19 +224,20 @@ export default function MenuPage() {
                             />
                           </div>
                         ) : null}
-                        <div className="min-w-0 flex-1">
-                      <div className="flex items-baseline gap-2 w-full mb-3">
-                        <span className="shrink-0 text-xl font-bold tracking-tight text-zinc-900 dark:text-white">
+                        <div className="min-w-0 w-full flex-1">
+                      <div className="mb-3 flex w-full min-w-0 items-start justify-between gap-3">
+                        <p className="min-w-0 flex-1 text-lg font-bold leading-snug tracking-tight text-zinc-900 [overflow-wrap:anywhere] dark:text-white sm:text-xl">
                           {displayName}
-                        </span>
-                        <span className="mb-1.5 min-w-[1rem] flex-1 border-b border-dotted border-zinc-300 dark:border-zinc-600" />
-                        <span className="shrink-0 text-xl font-bold tabular-nums text-lime-600 dark:text-lime-400">
+                        </p>
+                        <span className="shrink-0 pt-0.5 text-lg font-bold tabular-nums text-lime-600 whitespace-nowrap dark:text-lime-400 sm:text-xl">
                           €{item.price.toFixed(2)}
                         </span>
                       </div>
 
                       {displayDesc ? (
-                        <p className="leading-relaxed text-zinc-700 dark:text-zinc-300">{displayDesc}</p>
+                        <p className="break-words leading-relaxed text-zinc-700 [overflow-wrap:anywhere] dark:text-zinc-300">
+                          {displayDesc}
+                        </p>
                       ) : null}
 
                       {showIngredientMods && (

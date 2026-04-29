@@ -84,9 +84,9 @@ export default function RootLayout({
   return (
     <html
       lang="it"
-      className={`${permanentMarker.variable} ${kalam.variable} ${greatVibes.variable} bg-white antialiased`}
+      className={`${permanentMarker.variable} ${kalam.variable} ${greatVibes.variable} max-w-[100dvw] overflow-x-clip bg-white antialiased`}
     >
-      <body className="bg-white transition-colors dark:bg-zinc-950">
+      <body className="min-w-0 overflow-x-clip bg-white transition-colors dark:bg-zinc-950">
         <RestaurantJsonLd />
         <Providers>
           {children}

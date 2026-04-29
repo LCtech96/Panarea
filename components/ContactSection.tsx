@@ -14,9 +14,9 @@ export default function ContactSection() {
   }
 
   return (
-    <footer className="border-t border-white/10 bg-gradient-to-b from-zinc-900 via-zinc-950 to-black pb-[calc(5rem+env(safe-area-inset-bottom,0px))] pt-14 text-white md:pb-14">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mb-10 flex flex-col items-stretch justify-center gap-4 md:flex-row md:flex-wrap md:items-center md:gap-6">
+    <footer className="w-full min-w-0 max-w-[100dvw] overflow-x-clip border-t border-white/10 bg-gradient-to-b from-zinc-900 via-zinc-950 to-black pb-[calc(5rem+env(safe-area-inset-bottom,0px))] pt-14 text-white md:pb-14">
+      <div className="mx-auto w-full min-w-0 max-w-7xl px-3 sm:px-6 lg:px-8">
+        <div className="mb-10 flex min-w-0 flex-col items-stretch justify-center gap-4 md:flex-row md:flex-wrap md:items-center md:gap-6">
           <a
             href={`mailto:${email}`}
             className="group inline-flex items-center justify-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-6 py-4 text-[15px] font-medium backdrop-blur-sm transition hover:border-white/20 hover:bg-white/10 md:inline-flex md:flex-initial md:justify-start"

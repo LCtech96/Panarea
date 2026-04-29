@@ -11,8 +11,8 @@ export default function GoogleMaps() {
   const openInMapsHref = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(MAP_QUERY)}`
 
   return (
-    <div className="my-8 w-full">
-      <div className="h-[min(52vh,28rem)] w-full overflow-hidden rounded-[1.25rem] shadow-ios ring-1 ring-black/5 md:h-[min(60vh,32rem)] dark:ring-white/10">
+    <div className="my-8 w-full min-w-0 max-w-full">
+      <div className="h-[min(52vh,28rem)] w-full min-w-0 max-w-full overflow-hidden rounded-[1.25rem] shadow-ios ring-1 ring-black/5 md:h-[min(60vh,32rem)] dark:ring-white/10">
         <iframe
           src={embedSrc}
           width="100%"

@@ -9,13 +9,13 @@ import { useLanguage } from '@/contexts/LanguageContext'
 export default function Home() {
   const { t } = useLanguage()
   return (
-    <main className="site-shell pb-[calc(4.75rem+env(safe-area-inset-bottom,0px))] md:pb-10">
+    <main className="site-shell w-full min-w-0 max-w-[100dvw] pb-[calc(4.75rem+env(safe-area-inset-bottom,0px))] md:pb-10">
       <Navbar />
 
-      <div className="pt-12 md:pt-28">
+      <div className="w-full min-w-0 pt-12 md:pt-28">
         {/* Hero: copertina piena, avatar sotto (mai tagliato da overflow) */}
-        <div className="bg-white/70 dark:bg-zinc-900/50">
-          <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div className="w-full min-w-0 bg-white/70 dark:bg-zinc-900/50">
+          <div className="mx-auto w-full min-w-0 max-w-6xl px-4 sm:px-6 lg:px-8">
             <div className="overflow-hidden rounded-2xl bg-gradient-to-b from-zinc-100 to-zinc-200 shadow-ios-lg ring-1 ring-black/5 dark:from-zinc-800 dark:to-zinc-900 dark:ring-white/10 md:rounded-[2rem]">
               <div className="relative aspect-[16/10] min-h-[200px] w-full md:aspect-[2.2/1] md:min-h-[260px]">
                 <ClickableImage
@@ -52,9 +52,9 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 gap-6 lg:grid-cols-3 lg:gap-8">
-            <div className="space-y-6 lg:col-span-2">
+        <div className="mx-auto w-full min-w-0 max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
+          <div className="grid min-w-0 grid-cols-1 gap-6 lg:grid-cols-3 lg:gap-8">
+            <div className="min-w-0 space-y-6 lg:col-span-2">
               <section className="ios-card-solid p-7 md:p-8">
                 <h2 className="mb-5 text-2xl font-bold tracking-tight text-zinc-900 dark:text-white">
                   {t('home.allergy.title')}
@@ -67,7 +67,7 @@ export default function Home() {
               </section>
             </div>
 
-            <aside className="space-y-6">
+            <aside className="min-w-0 space-y-6">
               <section className="ios-card-solid p-7">
                 <h3 className="mb-4 text-lg font-bold tracking-tight text-zinc-900 dark:text-white">
                   {t('home.info')}
@@ -81,7 +81,7 @@ export default function Home() {
           </div>
         </div>
 
-        <section className="mx-auto max-w-6xl px-4 pb-16 pt-2 sm:px-6 md:pb-12 lg:px-8">
+        <section className="mx-auto w-full min-w-0 max-w-6xl px-4 pb-16 pt-2 sm:px-6 md:pb-12 lg:px-8">
           <div className="ios-card-solid overflow-hidden p-6 md:p-10">
             <div className="mb-8 text-center">
               <h2 className="mb-2 text-3xl font-bold tracking-tight text-zinc-900 dark:text-white md:text-4xl">
@@ -98,8 +98,8 @@ export default function Home() {
 
       <ContactSection />
 
-      <footer className="border-t border-white/10 bg-zinc-950/95 py-6 text-white backdrop-blur-xl dark:bg-black/90">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <footer className="w-full min-w-0 max-w-[100dvw] overflow-x-clip border-t border-white/10 bg-zinc-950/95 py-6 text-white backdrop-blur-xl dark:bg-black/90">
+        <div className="mx-auto w-full min-w-0 max-w-7xl px-4 sm:px-6 lg:px-8">
           <p className="text-center text-sm text-zinc-400">
             {t('home.createdBy')}{' '}
             <a

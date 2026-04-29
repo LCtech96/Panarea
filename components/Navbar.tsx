@@ -8,7 +8,7 @@ import { useLanguage } from '@/contexts/LanguageContext'
 
 /** Link navigazione: sempre leggibile su sfondo chiaro/scuro */
 const navBtnBase =
-  'flex flex-col items-center justify-center rounded-xl px-2.5 py-2 text-[11px] font-bold tracking-wide transition-colors active:scale-[0.97] md:rounded-2xl md:px-4 md:text-sm'
+  'flex min-h-0 min-w-0 flex-1 flex-col items-center justify-center rounded-lg px-1 py-1.5 text-[9px] font-bold leading-tight tracking-wide transition-colors active:scale-[0.97] sm:rounded-xl sm:px-2 sm:py-2 sm:text-[10px] md:rounded-2xl md:px-4 md:text-sm'
 
 const navBtnLight =
   `${navBtnBase} text-zinc-900 hover:bg-orange-100 hover:text-orange-800 [&_svg]:text-zinc-800 dark:text-zinc-100 dark:hover:bg-orange-950/50 dark:hover:text-orange-300 dark:[&_svg]:text-zinc-200`
@@ -21,7 +21,7 @@ export default function Navbar() {
     <>
       {/* Mobile: lingua + tema in alto (non nel footer della nav) */}
       <div
-        className="fixed left-0 right-0 top-0 z-[60] flex h-12 items-center justify-between border-b border-zinc-200 bg-white px-3 shadow-sm dark:border-zinc-700 dark:bg-zinc-950 md:hidden"
+        className="fixed left-0 right-0 top-0 z-[60] flex h-12 w-full max-w-[100dvw] min-w-0 items-center justify-between border-b border-zinc-200 bg-white px-2 shadow-sm dark:border-zinc-700 dark:bg-zinc-950 md:hidden"
         aria-label={t('lang.label')}
       >
         <span className="truncate text-sm font-bold tracking-tight text-orange-600">GianAgo</span>
@@ -32,11 +32,11 @@ export default function Navbar() {
       </div>
 
       <nav
-        className="fixed inset-x-0 bottom-0 z-50 border-t border-zinc-200 bg-white/98 pb-[max(0.35rem,env(safe-area-inset-bottom))] shadow-[0_-8px_30px_-10px_rgba(0,0,0,0.12)] backdrop-blur-md dark:border-zinc-700 dark:bg-zinc-950/98 dark:shadow-black/40 md:inset-x-auto md:bottom-auto md:left-1/2 md:right-auto md:top-5 md:w-[min(80rem,calc(100vw-2rem))] md:-translate-x-1/2 md:border md:shadow-ios-lg md:dark:shadow-black/40 md:rounded-[2rem] md:border-zinc-200 md:pb-0 md:backdrop-blur-xl"
+        className="fixed inset-x-0 bottom-0 z-50 w-full max-w-[100dvw] min-w-0 overflow-hidden border-t border-zinc-200 bg-white/98 pb-[max(0.35rem,env(safe-area-inset-bottom))] shadow-[0_-8px_30px_-10px_rgba(0,0,0,0.12)] backdrop-blur-md dark:border-zinc-700 dark:bg-zinc-950/98 dark:shadow-black/40 md:inset-x-auto md:bottom-auto md:left-1/2 md:right-auto md:top-5 md:w-[min(80rem,calc(100vw-2rem))] md:max-w-none md:-translate-x-1/2 md:border md:shadow-ios-lg md:dark:shadow-black/40 md:rounded-[2rem] md:border-zinc-200 md:pb-0 md:backdrop-blur-xl"
         aria-label="Navigazione principale"
       >
-        <div className="mx-auto max-w-7xl px-1 sm:px-3">
-          <div className="flex h-[3.75rem] items-center justify-between gap-1 md:h-[4.25rem] md:gap-2 md:px-2">
+        <div className="mx-auto w-full min-w-0 max-w-7xl px-0.5 sm:px-3">
+          <div className="flex h-[3.75rem] w-full min-w-0 items-center justify-between gap-0.5 sm:gap-1 md:h-[4.25rem] md:gap-2 md:px-2">
             <Link href="/menu" className={`${navBtnLight} min-w-0 flex-1`}>
               <svg className="mb-0.5 h-6 w-6 shrink-0 md:h-7 md:w-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />

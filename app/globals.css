@@ -19,9 +19,12 @@ body {
   background: var(--background);
   font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Roboto, 'Helvetica Neue',
     Arial, sans-serif;
-  overflow-x: hidden;
+  overflow-x: clip;
   margin: 0;
   padding: 0;
+  width: 100%;
+  max-width: 100dvw;
+  min-width: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
@@ -52,9 +55,12 @@ h6 {
 }
 
 html {
-  overflow-x: hidden;
+  overflow-x: clip;
   margin: 0;
   padding: 0;
+  width: 100%;
+  max-width: 100dvw;
+  min-width: 0;
 }
 
 main {
@@ -63,16 +69,16 @@ main {
 
 /* Shell sfondo morbido (stile iOS / raggruppamenti) */
 .site-shell {
-  @apply min-h-screen bg-gradient-to-b from-zinc-100 via-white to-zinc-50 dark:from-zinc-950 dark:via-zinc-900 dark:to-black;
+  @apply min-h-screen w-full min-w-0 max-w-[100dvw] overflow-x-clip bg-gradient-to-b from-zinc-100 via-white to-zinc-50 dark:from-zinc-950 dark:via-zinc-900 dark:to-black;
 }
 
 /* Card raggruppata tipo gruppi Impostazioni iOS */
 .ios-card {
-  @apply rounded-[1.75rem] border border-white/70 bg-white/85 shadow-ios backdrop-blur-xl dark:border-white/10 dark:bg-zinc-800/75 dark:shadow-ios-lg;
+  @apply max-w-full min-w-0 rounded-[1.75rem] border border-white/70 bg-white/85 shadow-ios backdrop-blur-xl dark:border-white/10 dark:bg-zinc-800/75 dark:shadow-ios-lg;
 }
 
 .ios-card-solid {
-  @apply rounded-[1.75rem] border border-zinc-200/80 bg-white shadow-ios dark:border-zinc-700/80 dark:bg-zinc-800 dark:shadow-ios-lg;
+  @apply max-w-full min-w-0 overflow-hidden rounded-[1.75rem] border border-zinc-200/80 bg-white shadow-ios dark:border-zinc-700/80 dark:bg-zinc-800 dark:shadow-ios-lg;
 }
 
 @layer utilities {

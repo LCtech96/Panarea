@@ -45,15 +45,15 @@ export default function AsportoPage() {
   }
 
   return (
-    <main className="site-shell pb-[calc(4.75rem+env(safe-area-inset-bottom,0px))] md:pb-10">
+    <main className="site-shell w-full min-w-0 max-w-[100dvw] pb-[calc(4.75rem+env(safe-area-inset-bottom,0px))] md:pb-10">
       <Navbar />
       
-      <div className="pb-10 pt-14 md:pb-12 md:pt-28">
-        <section className="mx-auto max-w-4xl px-4 py-10 sm:px-6 md:py-14 lg:px-8">
+      <div className="w-full min-w-0 pb-10 pt-14 md:pb-12 md:pt-28">
+        <section className="mx-auto w-full min-w-0 max-w-4xl px-3 py-10 sm:px-6 md:py-14 lg:px-8">
           <div className="mb-8">
             <BackButton />
           </div>
-          <h1 className="mb-10 text-center text-4xl font-bold tracking-tight text-zinc-900 dark:text-white md:text-5xl">
+          <h1 className="mb-10 break-words px-1 text-center text-3xl font-bold tracking-tight text-zinc-900 dark:text-white sm:text-4xl md:text-5xl">
             {t('cart.title')}
           </h1>
           
@@ -69,10 +69,10 @@ export default function AsportoPage() {
           ) : (
             <div className="mb-6 space-y-4">
               {orders.map((item) => (
-                <div key={item.id} className="ios-card-solid p-6 md:p-7">
-                  <div className="mb-4 flex items-start justify-between gap-3">
+                <div key={item.id} className="ios-card-solid p-4 sm:p-6 md:p-7">
+                  <div className="mb-4 flex min-w-0 items-start justify-between gap-3">
                     <div className="min-w-0 flex-1">
-                      <h3 className="mb-2 text-xl font-bold tracking-tight text-zinc-900 dark:text-white">
+                      <h3 className="mb-2 break-words text-xl font-bold leading-snug tracking-tight text-zinc-900 [overflow-wrap:anywhere] dark:text-white">
                         {item.name}
                       </h3>
                       <p className="tabular-nums text-zinc-600 dark:text-zinc-400">
@@ -139,12 +139,12 @@ export default function AsportoPage() {
           )}
 
           {orders.length > 0 && (
-            <div className="ios-card-solid mb-6 p-6 md:p-7">
-              <div className="mb-6 flex items-center justify-between gap-4">
-                <span className="text-2xl font-bold tracking-tight text-zinc-900 dark:text-white">
+            <div className="ios-card-solid mb-6 p-4 sm:p-6 md:p-7">
+              <div className="mb-6 flex min-w-0 flex-wrap items-center justify-between gap-3">
+                <span className="min-w-0 flex-1 break-words text-xl font-bold tracking-tight text-zinc-900 dark:text-white sm:text-2xl">
                   {t('cart.total')}
                 </span>
-                <span className="text-3xl font-bold tabular-nums text-orange-600 dark:text-orange-400">
+                <span className="shrink-0 text-2xl font-bold tabular-nums text-orange-600 dark:text-orange-400 sm:text-3xl">
                   €{getTotal().toFixed(2)}
                 </span>
               </div>

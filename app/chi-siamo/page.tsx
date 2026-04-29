@@ -9,16 +9,16 @@ import { useLanguage } from '@/contexts/LanguageContext'
 export default function ChiSiamoPage() {
   const { t } = useLanguage()
   return (
-    <main className="site-shell pb-[calc(4.75rem+env(safe-area-inset-bottom,0px))] md:pb-10">
+    <main className="site-shell w-full min-w-0 max-w-[100dvw] pb-[calc(4.75rem+env(safe-area-inset-bottom,0px))] md:pb-10">
       <Navbar />
       
-      <div className="pb-10 pt-14 md:pb-12 md:pt-28">
-        <section className="mx-auto max-w-6xl px-4 py-10 sm:px-6 md:py-14 lg:px-8">
+      <div className="w-full min-w-0 pb-10 pt-14 md:pb-12 md:pt-28">
+        <section className="mx-auto w-full min-w-0 max-w-6xl px-3 py-10 sm:px-6 md:py-14 lg:px-8">
           <div className="mb-8">
             <BackButton />
           </div>
           
-          <h1 className="mb-12 text-center text-4xl font-bold tracking-tight text-zinc-900 dark:text-white md:text-5xl">
+          <h1 className="mb-12 break-words px-1 text-center text-3xl font-bold tracking-tight text-zinc-900 dark:text-white sm:text-4xl md:text-5xl">
             {t('chi.title')}
           </h1>
 
