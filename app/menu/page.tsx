@@ -7,7 +7,11 @@ import ContactSection from '@/components/ContactSection'
 import BackButton from '@/components/BackButton'
 import { useOrder } from '@/contexts/OrderContext'
 import { useRouter } from 'next/navigation'
-import { parseMenuDescription } from '@/lib/menuDescriptionCodec'
+import {
+  parseMenuDescription,
+  pickMenuDescriptionText,
+  pickMenuDisplayName,
+} from '@/lib/menuDescriptionCodec'
 import { useLanguage } from '@/contexts/LanguageContext'
 import {
   MENU_CATEGORY_ANTIPASTI,
@@ -55,21 +59,21 @@ function mapApiToDisplay(row: ApiMenuRow): DisplayMenuItem {
   }
 }
 
-function getSectionTitle(position: number): string {
-  if (position >= 330) return 'Aperimeat con Cocktail a scelta'
-  if (position >= 310) return 'Aperifish con Cocktail a scelta'
-  if (position >= 290) return 'Dessert'
-  if (position >= 280) return 'Contorni'
-  if (position >= 250) return 'Secondi di Pesce'
-  if (position >= 230) return 'Secondi piatti Carne'
-  if (position >= 180) return 'Primi Piatti Pesce'
-  if (position >= 140) return 'Primi Piatti'
-  if (position >= 90) return 'Antipasti di Mare'
-  return 'Antipasti Pinse e Tagliere'
+function sectionTranslationKey(position: number): string {
+  if (position >= 330) return 'menu.sections.aperimeat'
+  if (position >= 310) return 'menu.sections.aperifish'
+  if (position >= 290) return 'menu.sections.dessert'
+  if (position >= 280) return 'menu.sections.contorni'
+  if (position >= 250) return 'menu.sections.secondiPesce'
+  if (position >= 230) return 'menu.sections.secondiCarne'
+  if (position >= 180) return 'menu.sections.primiPesce'
+  if (position >= 140) return 'menu.sections.primi'
+  if (position >= 90) return 'menu.sections.antipastiMare'
+  return 'menu.sections.antipastiPinse'
 }
 
 export default function MenuPage() {
-  const { t } = useLanguage()
+  const { t, locale } = useLanguage()
   const { addToCart } = useOrder()
   const router = useRouter()
   const [menuItems, setMenuItems] = useState<DisplayMenuItem[]>([])
@@ -139,7 +143,8 @@ export default function MenuPage() {
       alert(t('menu.selectQuantity'))
       return
     }
-    const { ingredients } = parseMenuDescription(item.description)
+    const { extra, ingredients } = parseMenuDescription(item.description)
+    const cartName = pickMenuDisplayName(item.name, extra, locale)
     const modifications: string[] = []
     if (selection.removals.length > 0) {
       modifications.push(`${t('menu.removedPrefix')}: ${selection.removals.join(', ')}`)
@@ -147,13 +152,13 @@ export default function MenuPage() {
 
     addToCart({
       id: `${item.id}-${Date.now()}`,
-      name: item.name,
+      name: cartName,
       price: item.price,
       quantity: selection.quantity,
       modifications,
     })
 
-    alert(`${selection.quantity}x ${item.name} ${t('menu.addedAlert')}`)
+    alert(`${selection.quantity}x ${cartName} ${t('menu.addedAlert')}`)
     router.push('/asporto')
   }
 
@@ -179,15 +184,17 @@ export default function MenuPage() {
                 .slice()
                 .sort((a, b) => a.position - b.position)
                 .map((item, index, sortedItems) => {
-                const sectionTitle = getSectionTitle(item.position)
-                const prevSectionTitle =
-                  index > 0 ? getSectionTitle(sortedItems[index - 1].position) : null
-                const showSectionTitle = index === 0 || sectionTitle !== prevSectionTitle
+                const sectionKey = sectionTranslationKey(item.position)
+                const prevSectionKey =
+                  index > 0 ? sectionTranslationKey(sortedItems[index - 1].position) : null
+                const showSectionTitle = index === 0 || sectionKey !== prevSectionKey
                 const selection = selectedItems[item.id] || {
                   quantity: 0,
                   removals: [],
                 }
-                const { it, en, ingredients } = parseMenuDescription(item.description)
+                const { extra, it, en, ingredients } = parseMenuDescription(item.description)
+                const displayName = pickMenuDisplayName(item.name, extra, locale)
+                const displayDesc = pickMenuDescriptionText(extra, it, en, locale)
                 const removableIngredients = ingredients.filter(
                   (ing) =>
                     !ing.toLowerCase().includes('scelta') &&
@@ -199,7 +206,7 @@ export default function MenuPage() {
                   <div key={item.id} className="space-y-3">
                     {showSectionTitle && (
                       <h2 className="mx-auto mt-10 max-w-xl text-center text-xl font-bold tracking-tight text-green-800 dark:text-lime-300 md:mt-12 md:text-2xl">
-                        {sectionTitle}
+                        {t(sectionKey)}
                       </h2>
                     )}
                     <div className="ios-card-solid p-6 md:p-7">
@@ -208,7 +215,7 @@ export default function MenuPage() {
                           <div className="relative mx-auto h-36 w-full max-w-sm shrink-0 overflow-hidden rounded-2xl bg-zinc-100 ring-1 ring-black/5 dark:bg-zinc-800 dark:ring-white/10 sm:mx-0 sm:h-28 sm:w-28">
                             <Image
                               src={item.imageUrl}
-                              alt={item.name}
+                              alt={displayName}
                               fill
                               className="object-cover"
                               sizes="(max-width: 640px) 100vw, 112px"
@@ -218,7 +225,7 @@ export default function MenuPage() {
                         <div className="min-w-0 flex-1">
                       <div className="flex items-baseline gap-2 w-full mb-3">
                         <span className="shrink-0 text-xl font-bold tracking-tight text-zinc-900 dark:text-white">
-                          {item.name}
+                          {displayName}
                         </span>
                         <span className="mb-1.5 min-w-[1rem] flex-1 border-b border-dotted border-zinc-300 dark:border-zinc-600" />
                         <span className="shrink-0 text-xl font-bold tabular-nums text-lime-600 dark:text-lime-400">
@@ -226,13 +233,8 @@ export default function MenuPage() {
                         </span>
                       </div>
 
-                      {it ? (
-                        <p className="leading-relaxed text-zinc-700 dark:text-zinc-300">{it}</p>
-                      ) : null}
-                      {en ? (
-                        <p className="mt-2 leading-relaxed text-zinc-500 italic dark:text-zinc-400">
-                          {en}
-                        </p>
+                      {displayDesc ? (
+                        <p className="leading-relaxed text-zinc-700 dark:text-zinc-300">{displayDesc}</p>
                       ) : null}
 
                       {showIngredientMods && (

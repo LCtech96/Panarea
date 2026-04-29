@@ -2,7 +2,11 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import Image from 'next/image'
-import { encodeMenuDescription, parseMenuDescription } from '@/lib/menuDescriptionCodec'
+import {
+  encodeMenuDescription,
+  parseMenuDescription,
+  type MenuExtra,
+} from '@/lib/menuDescriptionCodec'
 import { MENU_CATEGORY_ANTIPASTI } from '@/lib/menu-antipasti-defaults'
 
 interface ApiMenuRow {
@@ -26,6 +30,10 @@ interface GalleryImage {
 
 const emptyForm = () => ({
   name: '',
+  nameEn: '',
+  nameEs: '',
+  nameFr: '',
+  nameDe: '',
   price: '',
   category: MENU_CATEGORY_ANTIPASTI,
   available: true,
@@ -33,8 +41,27 @@ const emptyForm = () => ({
   imageId: null as number | null,
   descIt: '',
   descEn: '',
+  descEs: '',
+  descFr: '',
+  descDe: '',
   ingredientsCsv: '',
 })
+
+function menuExtraFromForm(f: ReturnType<typeof emptyForm>): MenuExtra | undefined {
+  const name: MenuExtra['name'] = {}
+  const desc: MenuExtra['desc'] = {}
+  if (f.nameEn.trim()) name.en = f.nameEn.trim()
+  if (f.nameEs.trim()) name.es = f.nameEs.trim()
+  if (f.nameFr.trim()) name.fr = f.nameFr.trim()
+  if (f.nameDe.trim()) name.de = f.nameDe.trim()
+  if (f.descEs.trim()) desc.es = f.descEs.trim()
+  if (f.descFr.trim()) desc.fr = f.descFr.trim()
+  if (f.descDe.trim()) desc.de = f.descDe.trim()
+  const extra: MenuExtra = {}
+  if (Object.keys(name).length) extra.name = name
+  if (Object.keys(desc).length) extra.desc = desc
+  return Object.keys(extra).length ? extra : undefined
+}
 
 function groupItems(items: ApiMenuRow[]): { category: string; rows: ApiMenuRow[] }[] {
   const map = new Map<string, ApiMenuRow[]>()
@@ -109,10 +136,14 @@ export default function AdminMenuPanel() {
   }
 
   const startEdit = (row: ApiMenuRow) => {
-    const { it, en, ingredients } = parseMenuDescription(row.description)
+    const { extra, it, en, ingredients } = parseMenuDescription(row.description)
     setEditingId(row.id)
     setForm({
       name: row.name,
+      nameEn: extra?.name?.en ?? '',
+      nameEs: extra?.name?.es ?? '',
+      nameFr: extra?.name?.fr ?? '',
+      nameDe: extra?.name?.de ?? '',
       price: String(row.price),
       category: row.category,
       available: row.available,
@@ -120,6 +151,9 @@ export default function AdminMenuPanel() {
       imageId: row.image_id ?? null,
       descIt: it,
       descEn: en,
+      descEs: extra?.desc?.es ?? '',
+      descFr: extra?.desc?.fr ?? '',
+      descDe: extra?.desc?.de ?? '',
       ingredientsCsv: ingredients.join(', '),
     })
     scrollToForm()
@@ -138,7 +172,7 @@ export default function AdminMenuPanel() {
         name: form.name.trim(),
         price: Number.parseFloat(form.price.replace(',', '.')),
         category: form.category.trim() || MENU_CATEGORY_ANTIPASTI,
-        description: encodeMenuDescription(form.descIt, form.descEn, form.ingredientsCsv),
+        description: encodeMenuDescription(form.descIt, form.descEn, form.ingredientsCsv, menuExtraFromForm(form)),
         image_id: form.imageId ?? undefined,
         available: form.available,
         featured: false,
@@ -175,7 +209,7 @@ export default function AdminMenuPanel() {
         name: form.name.trim(),
         price: Number.parseFloat(form.price.replace(',', '.')),
         category: form.category.trim(),
-        description: encodeMenuDescription(form.descIt, form.descEn, form.ingredientsCsv),
+        description: encodeMenuDescription(form.descIt, form.descEn, form.ingredientsCsv, menuExtraFromForm(form)),
         image_id: form.imageId,
         available: form.available,
         position: Number.parseInt(form.position, 10) || 0,
@@ -339,6 +373,42 @@ export default function AdminMenuPanel() {
               onChange={(e) => setForm((f) => ({ ...f, descEn: e.target.value }))}
             />
           </label>
+          <div className="rounded-lg border border-dashed border-zinc-300 bg-zinc-50/90 p-4 dark:border-zinc-600 dark:bg-zinc-900/50">
+            <p className="mb-3 text-sm font-bold text-zinc-900 dark:text-white">Traduzioni sito (ES / FR / DE)</p>
+            <p className="mb-3 text-xs text-zinc-600 dark:text-zinc-400">
+              Nomi e descrizioni opzionali per le lingue del menu pubblico. Se mancano, si usa l&apos;inglese o l&apos;italiano.
+            </p>
+            <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
+              <label className="block text-xs font-semibold text-zinc-800 dark:text-zinc-200">
+                Nome (EN)
+                <input className={fieldClass} value={form.nameEn} onChange={(e) => setForm((f) => ({ ...f, nameEn: e.target.value }))} />
+              </label>
+              <label className="block text-xs font-semibold text-zinc-800 dark:text-zinc-200">
+                Nome (ES)
+                <input className={fieldClass} value={form.nameEs} onChange={(e) => setForm((f) => ({ ...f, nameEs: e.target.value }))} />
+              </label>
+              <label className="block text-xs font-semibold text-zinc-800 dark:text-zinc-200">
+                Nome (FR)
+                <input className={fieldClass} value={form.nameFr} onChange={(e) => setForm((f) => ({ ...f, nameFr: e.target.value }))} />
+              </label>
+              <label className="block text-xs font-semibold text-zinc-800 dark:text-zinc-200">
+                Nome (DE)
+                <input className={fieldClass} value={form.nameDe} onChange={(e) => setForm((f) => ({ ...f, nameDe: e.target.value }))} />
+              </label>
+              <label className="block text-xs font-semibold text-zinc-800 dark:text-zinc-200 md:col-span-2">
+                Descrizione (ES)
+                <textarea className={`${fieldClass} min-h-[56px]`} value={form.descEs} onChange={(e) => setForm((f) => ({ ...f, descEs: e.target.value }))} />
+              </label>
+              <label className="block text-xs font-semibold text-zinc-800 dark:text-zinc-200 md:col-span-2">
+                Descrizione (FR)
+                <textarea className={`${fieldClass} min-h-[56px]`} value={form.descFr} onChange={(e) => setForm((f) => ({ ...f, descFr: e.target.value }))} />
+              </label>
+              <label className="block text-xs font-semibold text-zinc-800 dark:text-zinc-200 md:col-span-2">
+                Descrizione (DE)
+                <textarea className={`${fieldClass} min-h-[56px]`} value={form.descDe} onChange={(e) => setForm((f) => ({ ...f, descDe: e.target.value }))} />
+              </label>
+            </div>
+          </div>
           <label className="block text-sm font-semibold text-zinc-900 dark:text-zinc-100">
             Ingredienti (separati da virgola)
             <textarea
